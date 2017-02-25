@@ -149,6 +149,258 @@ header {
 		}
 	}
 }
+.formContainer {
+	max-width: 960px;
+	padding: 0 10px;
+	box-sizing: border-box;
+	margin: 40px auto 120px;
+	font-size: 18px;
+	color: $formFont;
+	position: relative;
+	.up {
+		position: absolute;
+		top: 5px;
+		right: -145px;
+		width: 74px;
+		cursor: pointer;
+		.icon {
+			width: 100%;
+			height: 40px;
+			background: url('../img/icon/up.png') center center / contain no-repeat;
+			margin-bottom: 3px;
+		}
+		p {
+			font-size: 14px;
+			text-align: center;
+		}
+	}
+	.free {
+		width: 100%;
+		min-height: 120px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		.freeStatus {
+			min-width: 160px;
+			text-align: center;
+			font-family: 'cd_bold', sans-serif;
+			font-size: 26px;
+			border-right: 1px solid $border;
+			margin-left: 1px;
+		}
+		.freeList {
+			display: flex;
+			flex-direction: row;
+			.freeItem {
+				text-align: center;
+				min-height: 120px;
+				padding: 70px 2px 5px;
+				box-sizing: border-box;
+				width: 25%;
+				position: relative;
+				border-right: 1px solid $border;
+				&:before {
+					content: '';
+					position: absolute;
+					width: 60px;
+					height: 50px;
+					left: calc(50% - 30px);
+					top: 14px;
+				}
+				&:nth-child(1) {
+					background: #ffb5be;
+					&:before {
+						background: url('../img/icon/plusList.png') center center / contain no-repeat;
+					}
+				}
+				&:nth-child(2) {
+					background: #6becff;
+					&:before {
+						background: url('../img/icon/search.png') center center / contain no-repeat;
+					}
+				}
+				&:nth-child(3) {
+					background: #95ff6b;
+					padding-right: 32px;
+					padding-left: 32px;
+					&:before {
+						height: 45px;
+						background: url('../img/icon/chart.png') center center / contain no-repeat;
+					}
+				}
+				&:nth-child(4) {
+					background: #cdacff;
+					border-right: none;
+					&:before {
+						height: 45px;
+						background: url('../img/icon/marketing.png') center center / contain no-repeat;
+					}
+				}
+			}
+		}
+	}
+	.changeList {
+		border: 1px solid $border;
+		.changeItem {
+			border-bottom: 1px solid $border;
+			height: 65px;
+			position: relative;
+			display: flex;
+			align-items: center;
+			flex-direction: row;
+			cursor: pointer;
+			.designType {
+				width: 50%;
+				height: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				user-select: none;
+				cursor: pointer;
+			}
+			&:nth-child(2n) {
+				background: #f1f2f8;
+			}
+			&:nth-child(3) .icon:before {
+				background: url("../img/icon/newspaper.svg") center center / cover no-repeat;
+			}
+			&:nth-child(4) .icon:before {
+				background: url("../img/icon/email.svg") center center / cover no-repeat;
+			}
+			&:nth-child(5) .icon:before {
+				background: url("../img/icon/writing.png") center center / cover no-repeat;
+			}
+			&:nth-child(6) .icon:before {
+				background: url("../img/icon/verified-text-paper.svg") center center / cover no-repeat;
+			}
+			&:nth-child(7) .icon:before {
+				background: url("../img/icon/translation.svg") center center / cover no-repeat;
+			}
+			&:nth-child(8) .icon:before {
+				background: url("../img/icon/envelope.svg") center center / cover no-repeat;
+			}
+			&:nth-child(9) .icon:before {
+				background: url("../img/icon/chat-bubbles-with-ellipsis.svg") center center / cover no-repeat;
+			}
+			&:nth-child(10) .icon:before {
+				background: url("../img/icon/laptop.svg") center center / cover no-repeat;
+			}
+			&:nth-child(11) .icon:before {
+				background: url("../img/icon/drawing.png") center center / cover no-repeat;
+			}
+			&:nth-child(12) .icon:before {
+				background: url("../img/icon/admin-with-cogwheels.svg") center center / cover no-repeat;
+			}
+		}
+		.status, .icon {
+			min-width: 80px;
+			height: 100%;
+			border-right: 1px solid $border;
+			position: relative;
+			&:before {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 40px;
+				height: 40px;
+			}
+		}
+		.status.checked {
+			background: $green;
+			&:before {
+				background: url("../img/icon/check.svg") center center / cover no-repeat;
+			}
+		}
+		.status.noChecked {
+			background: $red;
+			&:before {
+				background: url("../img/icon/close.svg") center center / cover no-repeat;
+			}
+		}
+		.description {
+			width: 100%;
+			box-sizing: border-box;
+			padding: 0 20px;
+		}
+		.question {
+			position: absolute;
+			width: 50%;
+			min-height: 42px;
+			top: 100%;
+			left: 0;
+			background: $darkBlue;
+			color: #fff;
+			display: none;
+			justify-content: flex-end;
+			align-items: center;
+			line-height: 17px;
+			z-index: 10;
+			padding: 0 20px;
+			box-sizing: border-box;
+			button {
+				cursor: pointer;
+				color: #fff;
+				text-transform: uppercase;
+				height: 24px;
+				box-sizing: border-box;
+				border: 1px solid #fff;
+				outline: none;
+				margin: 0 5px;
+				border-radius: 2px;
+				width: 72px;
+				text-align: center;
+			}
+			.ok {
+				background: $green;
+				margin-left: 20px;
+			}
+			.no {
+				background: $red;
+			}
+			input {
+				width: 45px;
+				height: 24px;
+				border: 1px solid $border;
+				border-radius: 2px;
+				box-sizing: border-box;
+				font-size: 18px;
+				padding: 0 5px;
+				outline: none;
+				margin: 0 5px;
+			}
+		}
+		.active ~ .question, .active .question {
+			display: flex;
+		}
+
+
+		.design {
+			.question {
+				justify-content: flex-end;
+			}
+			.individual.active + .question {
+				left: auto;
+				right: 0;
+			}
+			.checked {
+				background: $green;
+				color: #fff;
+			}
+		}
+		.engine {
+			//padding: ;
+		}
+
+
+
+
+
+
+	}
+
+}
 footer {
 	position: fixed;
 	bottom: 0;

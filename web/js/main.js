@@ -12,7 +12,8 @@ var AppJS = {
         $('.choiceMethod li').on('click', function()  { AppJS.callMethod($(this)); });
         $('.showCallBack').on('click', function()  { AppJS.switchCallBack(); });
         $('.callBackForm button').on('click', function(e)  { AppJS.ajaxSubmit(e, $(this)); });
-        $('.gibBtn, .second').on('click', function()  { AppJS.rotateSite(); });
+        $('.gibBtn, .up').on('click', function()  { AppJS.rotateSite(); });
+        $('.changeControl').on('click', function()  { AppJS.changeControl($(this)); });
     },
 
     ajaxSubmit: function (e, submit) {
@@ -35,6 +36,16 @@ var AppJS = {
         form.attr('id', 'method' + (li.index() + 1));
         form.find('input').removeAttr('name').removeClass('submitField');
         form.find('.' + name).attr('name', name).addClass('submitField');
+    },
+
+    changeControl: function (control) {
+        var allControl = $('.changeControl');
+        if (control.is('.designType')) {
+            $('.designType').removeClass('checked');
+            control.addClass('checked');
+        }
+        allControl.removeClass('active');
+        control.addClass('active');
     },
 
     switchCallBack: function () {
