@@ -9,11 +9,20 @@ var AppJS = {
     },
 
     handlers: function () {
-        $('body').on('click', function()  { AppJS.test( $(this) ); });
+        $('.choiceMethod li').on('click', function()  { AppJS.callMethod($(this)); });
+        $('.gibBtn, .second').on('click', function()  { AppJS.rotateSite(); });
     },
 
-    test: function (body) {
-        console.log(body);
+    callMethod: function (li) {
+        var siblings = li.siblings('li');
+        var form = li.closest('.callBack').find('form');
+        siblings.removeClass('active');
+        li.addClass('active');
+        form.attr('id', 'method' + (li.index() + 1));
+    },
+
+    rotateSite: function () {
+        $('body').toggleClass('rotate');
     }
 
  

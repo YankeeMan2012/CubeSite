@@ -11,8 +11,8 @@ var concatJs     = require('gulp-concat');
 var paths = {
     src: {
         styles: {
-            app: './scss/admin.scss',
-            appAll: './scss/**/*.scss',
+            app: 'scss/style.scss',
+            appAll: 'scss/**/*.scss',
             libs: [
                 './node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css'
             ]
@@ -31,7 +31,7 @@ var paths = {
         styles: {
             app: {
                 file: 'style.css',
-                dir: './web/css'
+                dir: 'web/css'
             },
             libs: {
                 file: 'libs.css',
