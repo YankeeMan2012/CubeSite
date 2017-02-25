@@ -48,26 +48,28 @@
             <li class="price">Ориентировочная стоимость: <span>5,990 руб.</span></li>
             <li class="deadline">Ориентировочные сроки: <span>10 дней.</span></li>
         </ul>
-        <div class="button">ЗАКАЗАТЬ ПРОДАЮЩИЙ САЙТ</div>
+        <div class="button showCallBack">ЗАКАЗАТЬ ПРОДАЮЩИЙ САЙТ</div>
     </div>
 </footer>
 
 <div class="callBack">
     <div class="question">Как можно с вами связаться для уточнения деталей?</div>
     <ul class="choiceMethod">
-        <li></li>
-        <li class="active"></li>
-        <li></li>
-        <li></li>
+        <li data-target="telephone"></li>
+        <li data-target="whatsapp" class="active"></li>
+        <li data-target="skype"></li>
+        <li data-target="email"></li>
     </ul>
-    <form action="" method="" class="callBackForm" id="method2">
-        <input class="tell" type="text" value="+7 (909)-999-99-99">
-        <input class="whatsapp" type="text" value="+5 (505)-555-55-55">
-        <input class="skype" type="text" value="yankeeman">
-        <input class="email" type="text" value="yankeeman2012@mail.ru">
+    <form action="mail.php" method="post" class="callBackForm" id="method2">
+        <input name=""          class="telephone" type="text" value="+7 (909)-999-99-99">
+        <input name="whatsapp"  class="whatsapp" type="text" value="+5 (505)-555-55-55">
+        <input name=""          class="skype" type="text" value="yankeeman">
+        <input name=""          class="email" type="text" value="yankeeman2012@mail.ru">
         <button type="submit">Связаться со мной</button>
     </form>
 </div>
+
+<div class="preLoader"></div>
 
 <script src="js/libs/libs.js"></script>
 <script src="js/main.js"></script>
