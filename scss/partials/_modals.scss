@@ -181,3 +181,112 @@
 		}
 	}
 }
+
+.portfolio {
+	position: absolute;
+	height: calc(100vh - 290px);
+	width: 100%;
+	top: 84px;
+	left: 0;
+	z-index: -10;
+	&.pfShow {
+		z-index: 100;
+	}
+	.pfClose {
+		width: 48px;
+		height: 48px;
+		background: url('../img/icon/pfClose.png') center center / cover no-repeat;
+		position: absolute;
+		top: 15px;
+		left: calc(50% + 422px);
+		cursor: pointer;
+		transition: opacity .2s linear;
+		opacity: .7;
+		z-index: 15;
+		&:hover {
+			opacity: 1;
+		}
+	}
+	.pfSlider {
+		height: 100%;
+		.pfSliderWrap {
+			height: 100%;
+			align-items: flex-end;
+
+		}
+		.pfSlide {
+			height: 94%;
+			width: 340px;
+			box-sizing: border-box;
+			text-align: center;
+			color: #fff;
+			font-family: 'cd_bold', sans-serif;
+			font-size: 24px;
+			transition: transform .3s linear;
+			transform: scale(.56);
+			transform-origin: 50% 100% 0;
+			z-index: 2;
+			.imgBox {
+				border: 1px solid $darkBlue;
+				margin-top: 10px;
+				height: calc(100% - 10px);
+				position: relative;
+				box-sizing: border-box;
+				overflow: hidden;
+				box-shadow: 0 0 12px 5px rgba(#000, .5);
+			}
+			.preview {
+				position: absolute;
+				width: auto;
+				height: 100%;
+				top: 0;
+				left: 50%;
+				transform: translateX(-50%);
+			}
+		}
+		.pfNav {
+			position: absolute;
+			top: 50%;
+			width: 45px;
+			height: 75px;
+			background: red;
+			z-index: 12;
+			background: url("../img/icon/pfPrev.png") center center / cover no-repeat;
+			cursor: pointer;
+			transition: opacity .2s linear;
+			opacity: .8;
+			&:hover {
+				opacity: 1;
+			}
+		}
+		.swiper-prev {
+			left: calc(50% - 235px);
+		}
+		.swiper-next {
+			right: calc(50% - 235px);
+			transform: rotate(180deg);
+		}
+
+
+		.swiper-slide-active {
+			z-index: 10;
+			transform: scale(1);
+		}
+		.swiper-slide-next, .swiper-slide-prev {
+			transform: scale(.90);
+			z-index: 8;
+		}
+		.level3 {
+			z-index: 7;
+			transform: scale(.80);
+		}
+		.level4 {
+			z-index: 6;
+			transform: scale(.62);
+		}
+		.level5 {
+			z-index: 5;
+			transform: scale(.58);
+		}
+	}
+}

@@ -168,10 +168,16 @@ header {
 			height: 40px;
 			background: url('../img/icon/up.png') center center / contain no-repeat;
 			margin-bottom: 3px;
+			transition: all .2s linear;
 		}
 		p {
 			font-size: 14px;
 			text-align: center;
+		}
+		&:hover {
+			.icon {
+				opacity: .8;
+			}
 		}
 	}
 	.free {
@@ -241,6 +247,8 @@ header {
 	}
 	.changeList {
 		border: 1px solid $border;
+		height: calc(100vh - 160px);
+		overflow: hidden;
 		.changeItem {
 			border-bottom: 1px solid $border;
 			height: 65px;
@@ -314,15 +322,82 @@ header {
 			}
 		}
 		.status.noChecked {
-			background: $red;
+			background: $lightRed;
 			&:before {
 				background: url("../img/icon/close.svg") center center / cover no-repeat;
+			}
+		}
+		.icon {
+			.itemDescription {
+				position: absolute;
+				font-size: 12px;
+				padding: 8px 10px;
+				box-sizing: border-box;
+				width: 224px;
+				border-radius: 10px;
+				left: 50%;
+				bottom: 100%;
+				background: #fff;
+				border: 1px solid $darkBlue;
+				z-index: -15;
+				margin-left: -112px;
+				color: $darkBlue;
+				transition: opacity .2s linear;
+				opacity: 0;
+				&:before {
+					content: '';
+					position: absolute;
+					left: 50%;
+					margin-left: -18px;
+					bottom: -11px;
+					width: 27px;
+					height: 12px;
+					background: url("../img/icon/arrow.png") center center / cover no-repeat;
+				}
+			}
+			&:hover {
+				.itemDescription {
+					z-index: 15;
+					opacity: 1;
+				}
 			}
 		}
 		.description {
 			width: 100%;
 			box-sizing: border-box;
 			padding: 0 20px;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+			.rightArrow {
+				min-width: 7px;
+				min-height: 14px;
+				background: url("../img/icon/next.png") center center / cover no-repeat;
+			}
+			input {
+				width: 120px;
+				border: 1px solid $border;
+				border-radius: 2px;
+				margin-top: 5px;
+				font-family: 'cd_regular', sans-serif;
+				font-size: 18px;
+				padding: 0 5px;
+				box-sizing: border-box;
+				height: 24px;
+				outline: none;
+			}
+			.inputBox {
+				min-width: 160px;
+				max-width: 160px;
+				&.small {
+					min-width: 120px;
+					max-width: 120px;
+					input {
+						width: 70px;
+					}
+				}
+			}
 		}
 		.question {
 			position: absolute;
@@ -351,13 +426,20 @@ header {
 				border-radius: 2px;
 				width: 72px;
 				text-align: center;
+				transition: all .2s linear;
 			}
 			.ok {
 				background: $green;
 				margin-left: 20px;
+				&:hover {
+					background: rgba($green, .8);
+				}
 			}
 			.no {
 				background: $red;
+				&:hover {
+					background: rgba($red, .8);
+				}
 			}
 			input {
 				width: 45px;
@@ -390,16 +472,46 @@ header {
 			}
 		}
 		.engine {
-			//padding: ;
+			padding: 15px;
+			box-sizing: border-box;
+			position: relative;
+			div {
+				min-width: 160px;
+			}
+			select {
+				height: 25px;
+				border: 1px solid $border;
+				outline: none;
+				width: 100%;
+				font-size: 18px;
+				font-family: 'cd_regular', sans-serif;
+				padding: 0 5px;
+				border-radius: 2px;
+			}
+			label {
+				position: absolute;
+				top: 50%;
+				margin-top: -7px;
+				right: 22px;
+				width: 14px;
+				height: 14px;
+				background: url("../img/icon/select.png") center center / cover no-repeat;
+			}
 		}
-
-
-
-
-
-
+		.logotype {
+			.inputBox {
+				min-width: 310px;
+				max-width: 310px;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				justify-content: space-between;
+				input {
+					width: 70px;
+				}
+			}
+		}
 	}
-
 }
 footer {
 	position: fixed;

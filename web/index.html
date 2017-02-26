@@ -5,6 +5,7 @@
     <title>YoRich - Стильные сайты под ключ</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/libs.css">
     <link rel="icon" href="img/icon/favicon.ico">
 </head>
 <body class="rotate">
@@ -18,7 +19,7 @@
                     <a href="#" class="logo"></a>
                     <nav class="mainMenu">
                         <a href="#">О нас</a>
-                        <a href="#">Портфолио</a>
+                        <a href="#" class="openPf">Портфолио</a>
                         <a href="#">Отзывы</a>
                         <a href="#">Наш блог</a>
                     </nav>
@@ -41,34 +42,41 @@
         </div>
         <div class="side second">
             <div class="formContainer">
-                <div class="changeList">
+                <div class="changeList customScroll">
                     <div class="changeItem design">
                         <div class="changeControl designType active checked">Адаптивный шаблон</div>
                         <div class="changeControl designType individual">Индивидуальный дизайн</div>
-                        <div class="question">количество страниц: <input type="text"> шт <button class="ok">ок</button></div>
+                        <div data-question="1" class="question">количество страниц: <input data-key="page" class="pageNum calculate" type="text"> шт <button class="ok">ок</button></div>
                     </div>
                     <div class="changeItem engine">
-                        <select name="" id="">
-                            <option value="">1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
+                        <label for="select"></label>
+                        <div>Желаемая CMS</div>
+                        <select name="" id="select">
+                            <option value="1">Без CMS</option>
+                            <option value="2">Joomla 3,22</option>
+                            <option value="3">Joomla 3,33</option>
+                            <option value="4">Joomla 3,44</option>
                         </select>
                     </div>
                     <div class="changeItem changeControl">
-                        <div class="status checked"></div>
-                        <div class="icon"></div>
+                        <div class="status" data-key="news"></div>
+                        <div class="icon">
+                            <div class="itemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </div>
+                        </div>
                         <div class="description">нужны ли новости?</div>
-                        <div class="question">
+                        <div data-question="2" class="question">
                             нужны ли новости?
                             <button class="ok">Да</button>
                             <button class="no">Нет</button>
                         </div>
                     </div>
                     <div class="changeItem changeControl">
-                        <div class="status noChecked"></div>
-                        <div class="icon"></div>
+                        <div class="status" data-key="contacts"></div>
+                        <div class="icon">
+                            <div class="itemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </div>
+                        </div>
                         <div class="description">Контакты/карта проезда?</div>
-                        <div class="question">
+                        <div data-question="3" class="question">
                             нужна ли карта проезда?
                             <button class="ok">Да</button>
                             <button class="no">Нет</button>
@@ -76,76 +84,97 @@
                     </div>
                     <div class="changeItem">
                         <div class="status"></div>
-                        <div class="icon"></div>
+                        <div class="icon">
+                            <div class="itemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </div>
+                        </div>
                         <div class="description">Наполнение уникальными продающими текстами
-
+                            <div class="rightArrow"></div>
+                            <div class="inputBox">кол-во публикаций <input data-key="publication" class="calculate" type="text" value="13"> шт</div>
+                            <div class="inputBox small">обьем <input data-key="wordsNum" class="calculate" type="text" value="3000"> слов</div>
                         </div>
                     </div>
                     <div class="changeItem changeControl">
-                        <div class="status checked"></div>
-                        <div class="icon"></div>
+                        <div class="status" data-key="catalog"></div>
+                        <div class="icon">
+                            <div class="itemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </div>
+                        </div>
                         <div class="description">Каталог товаров с формой заказа</div>
-                        <div class="question">
+                        <div data-question="4" class="question">
                             нужен ли каталог?
                             <button class="ok">Да</button>
                             <button class="no">Нет</button>
                         </div>
                     </div>
                     <div class="changeItem changeControl">
-                        <div class="status checked"></div>
-                        <div class="icon"></div>
+                        <div class="status" data-key="multilanguage"></div>
+                        <div class="icon">
+                            <div class="itemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </div>
+                        </div>
                         <div class="description">Мультиязычный интерфейс</div>
-                        <div class="question">
+                        <div data-question="5" class="question">
                             нужна ли мультиязычность?
                             <button class="ok">Да</button>
                             <button class="no">Нет</button>
                         </div>
                     </div>
                     <div class="changeItem changeControl">
-                        <div class="status checked"></div>
-                        <div class="icon"></div>
+                        <div class="status" data-key="mail_delivery"></div>
+                        <div class="icon">
+                            <div class="itemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </div>
+                        </div>
                         <div class="description">Подключение почтовой рассылки</div>
-                        <div class="question">
+                        <div data-question="6" class="question">
                             нужна ли рассылка?
                             <button class="ok">Да</button>
                             <button class="no">Нет</button>
                         </div>
                     </div>
-                    <!--<div class="changeItem changeControl">-->
-                        <!--<div class="status checked"></div>-->
-                        <!--<div class="icon"></div>-->
-                        <!--<div class="description">СМС шлюз</div>-->
-                        <!--<div class="question">-->
-                            <!--нужен ли СМС шлюз?-->
-                            <!--<button class="ok">Да</button>-->
-                            <!--<button class="no">Нет</button>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="changeItem changeControl news">-->
-                        <!--<div class="status checked"></div>-->
-                        <!--<div class="icon"></div>-->
-                        <!--<div class="description">Создание корпоративной почты</div>-->
-                        <!--<div class="question">-->
-                            <!--нужна ли корпоративная почта?-->
-                            <!--<button class="ok">Да</button>-->
-                            <!--<button class="no">Нет</button>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="changeItem">-->
-                        <!--<div class="status"></div>-->
-                        <!--<div class="icon"></div>-->
-                        <!--<div class="description">Разработка логотипа</div>-->
-                    <!--</div>-->
-                    <!--<div class="changeItem changeControl">-->
-                        <!--<div class="status checked"></div>-->
-                        <!--<div class="icon"></div>-->
-                        <!--<div class="description">Онлайн консультант, техническая поддержка</div>-->
-                        <!--<div class="question">-->
-                            <!--нужна ли техподдержка?-->
-                            <!--<button class="ok">Да</button>-->
-                            <!--<button class="no">Нет</button>-->
-                        <!--</div>-->
-                    <!--</div>-->
+                    <div class="changeItem changeControl">
+                        <div class="status" data-key="sms"></div>
+                        <div class="icon">
+                            <div class="itemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </div>
+                        </div>
+                        <div class="description">СМС шлюз</div>
+                        <div data-question="7" class="question">
+                            нужен ли СМС шлюз?
+                            <button class="ok">Да</button>
+                            <button class="no">Нет</button>
+                        </div>
+                    </div>
+                    <div class="changeItem changeControl">
+                        <div class="status" data-key="corporate_email"></div>
+                        <div class="icon">
+                            <div class="itemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </div>
+                        </div>
+                        <div class="description">Создание корпоративной почты</div>
+                        <div data-question="8" class="question">
+                            нужна ли корпоративная почта?
+                            <button class="ok">Да</button>
+                            <button class="no">Нет</button>
+                        </div>
+                    </div>
+                    <div class="changeItem logotype">
+                        <div class="status"></div>
+                        <div class="icon">
+                            <div class="itemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </div>
+                        </div>
+                        <div class="description">Разработка логотипа
+                            <div class="rightArrow"></div>
+                            <div class="inputBox">количество вариантов: <input data-key="logo" class="calculate" type="text" value="13"> шт</div>
+                        </div>
+                    </div>
+                    <div class="changeItem changeControl">
+                        <div class="status" data-key="technical_support"></div>
+                        <div class="icon">
+                            <div class="itemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </div>
+                        </div>
+                        <div class="description">Онлайн консультант, техническая поддержка</div>
+                        <div data-question="9" class="question">
+                            нужна ли техподдержка?
+                            <button class="ok">Да</button>
+                            <button class="no">Нет</button>
+                        </div>
+                    </div>
                     <div class="free">
                         <div class="freeStatus">Бесплатно:</div>
                         <div class="freeList">
@@ -162,7 +191,6 @@
                     <p>на главный экран</p>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
@@ -170,8 +198,8 @@
 <footer>
     <div class="footerContainer">
         <ul class="resultInfo">
-            <li class="price">Ориентировочная стоимость: <span>5,990 руб.</span></li>
-            <li class="deadline">Ориентировочные сроки: <span>10 дней.</span></li>
+            <li class="price">Ориентировочная стоимость: <span>- руб.</span></li>
+            <li class="deadline">Ориентировочные сроки: <span>- дней.</span></li>
         </ul>
         <div class="button showCallBack">ЗАКАЗАТЬ ПРОДАЮЩИЙ САЙТ</div>
     </div>
@@ -194,9 +222,86 @@
     </form>
 </div>
 
+<div class="portfolio">
+    <div class="pfClose"></div>
+    <div class="pfSlider swiper-container">
+        <div class="pfSliderWrap swiper-wrapper">
+            <div class="pfSlide swiper-slide">
+                Название сайта
+                <div class="imgBox">
+                    <img class="preview" src="img/preview.jpg">
+                </div>
+            </div>
+            <div class="pfSlide swiper-slide">
+                Название сайта
+                <div class="imgBox">
+                    <img class="preview" src="img/preview.jpg">
+                </div>
+            </div>
+            <div class="pfSlide swiper-slide">
+                Название сайта
+                <div class="imgBox">
+                    <img class="preview" src="img/preview.jpg">
+                </div>
+            </div>
+            <div class="pfSlide swiper-slide">
+                Название сайта
+                <div class="imgBox">
+                    <img class="preview" src="img/preview.jpg">
+                </div>
+            </div>
+            <div class="pfSlide swiper-slide">
+                Название сайта
+                <div class="imgBox">
+                    <img class="preview" src="img/preview.jpg">
+                </div>
+            </div>
+            <div class="pfSlide swiper-slide">
+                Название сайта
+                <div class="imgBox">
+                    <img class="preview" src="img/preview.jpg">
+                </div>
+            </div>
+            <div class="pfSlide swiper-slide">
+                Название сайта
+                <div class="imgBox">
+                    <img class="preview" src="img/preview.jpg">
+                </div>
+            </div>
+            <div class="pfSlide swiper-slide">
+                Название сайта
+                <div class="imgBox">
+                    <img class="preview" src="img/preview.jpg">
+                </div>
+            </div>
+            <div class="pfSlide swiper-slide">
+                Название сайта
+                <div class="imgBox">
+                    <img class="preview" src="img/preview.jpg">
+                </div>
+            </div>
+            <div class="pfSlide swiper-slide">
+                Название сайта
+                <div class="imgBox">
+                    <img class="preview" src="img/preview.jpg">
+                </div>
+            </div>
+            <div class="pfSlide swiper-slide">
+                Название сайта
+                <div class="imgBox">
+                    <img class="preview" src="img/preview.jpg">
+                </div>
+            </div>
+        </div>
+        <div class="pfNav swiper-prev"></div>
+        <div class="pfNav swiper-next"></div>
+    </div>
+</div>
+
 <div class="preLoader"></div>
 
 <script src="js/libs/libs.js"></script>
+<script src="js/params.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

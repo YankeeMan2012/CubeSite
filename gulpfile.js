@@ -14,7 +14,8 @@ var paths = {
             app: 'scss/style.scss',
             appAll: 'scss/**/*.scss',
             libs: [
-                './node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css'
+                './node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css',
+                './node_modules/swiper/dist/css/swiper.min.css'
             ]
         },
         scripts: {
@@ -23,7 +24,8 @@ var paths = {
                 './node_modules/element-closest/element-closest.js',
                 './node_modules/jquery/dist/jquery.min.js',
                 './node_modules/jquery.maskedinput/src/jquery.maskedinput.js',
-                './node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js'
+                './node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js',
+                './node_modules/swiper/dist/js/swiper.jquery.js'
             ]
         }
     },
