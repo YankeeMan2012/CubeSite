@@ -1,15 +1,14 @@
 @media screen and (max-width: 1300px) {
-	.formContainer {
-		.up {
-			right: 11px;
-			padding: 5px;
-			border: 1px solid $darkBlue;
-			background: #fff;
-			border-right: none;
-			border-bottom-left-radius: 10px;
-			border-top-left-radius: 10px;
-			top: 50%;
-		}
+	.up {
+		right: 0;
+		padding: 5px;
+		border: 1px solid $darkBlue;
+		background: #fff;
+		border-right: none;
+		border-bottom-left-radius: 10px;
+		border-top-left-radius: 10px;
+		top: 50%;
+		position: fixed;
 	}
 }
 
@@ -234,6 +233,18 @@
 @media screen and (max-width: 500px) {
 	.gibBtn {
 		width: 100% !important;
+	}
+	.designType {
+		&:nth-child(1) {
+			.itemDescription {
+				margin-left: -70px;
+			}
+		}
+		&:nth-child(2) {
+			.itemDescription {
+				margin-left: -154px;
+			}
+		}
 	}
 }
 

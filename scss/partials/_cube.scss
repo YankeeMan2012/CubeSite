@@ -9,6 +9,9 @@
 		.second {
 			z-index: 10;
 		}
+		& + .up {
+			display: block;
+		}
 	}
 }
 
