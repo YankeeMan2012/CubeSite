@@ -125,7 +125,7 @@ var AppJS = {
     },
 
     rotateSite: function () {
-        $('body').toggleClass('rotate');
+        $('.wrapper').toggleClass('rotate');
     },
 
     pfShow: function () {

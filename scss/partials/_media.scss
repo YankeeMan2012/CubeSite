@@ -1,0 +1,159 @@
+@media screen and (max-width: 1300px) {
+	.formContainer {
+		.up {
+			right: 11px;
+			padding: 5px;
+			border: 1px solid $darkBlue;
+			background: #fff;
+			border-right: none;
+			border-bottom-left-radius: 10px;
+			border-top-left-radius: 10px;
+			top: 50%;
+		}
+	}
+}
+
+@media screen and (max-width: 960px) {
+	.portfolio .pfClose {
+		left: auto;
+		right: 15px;
+	}
+	.formContainer {
+		padding: 0;
+		.up {
+			right: 1px;
+		}
+	}
+
+}
+
+@media screen and (max-width: 900px) {
+	.formContainer {
+		margin-bottom: 195px;
+		.changeList {
+			height: calc(100vh - 245px);
+		}
+		.free {
+			flex-wrap: wrap;
+			.freeStatus {
+				width: 100%;
+				font-size: 52px;
+				padding: 10px;
+			}
+			.freeList {
+				flex-wrap: wrap;
+				.freeItem {
+					width: 50%;
+				}
+			}
+		}
+	}
+	footer {
+		.footerContainer {
+			display: flex;
+			flex-direction: column;
+			height: 160px;
+			padding: 20px;
+		}
+		.resultInfo {
+			font-family: 'cd_regular', sans-serif;
+			font-size: 16px;
+			line-height: 20px;
+		}
+	}
+}
+
+@media screen and (max-width: 720px) {
+	.formContainer {
+		.changeItem {
+			.rightArrow, .inputBox {
+				display: none !important;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 650px) {
+	.side {
+		overflow-y: auto;
+	}
+	header {
+		background: #1d1e26;
+		.headerContainer {
+			flex-wrap: wrap;
+			padding: 0;
+		}
+		.logo {
+			width: 100%;
+			margin: 10px;
+			box-sizing: border-box;
+		}
+		.mainMenu {
+			flex-wrap: wrap;
+			width: 100%;
+			a {
+				width: 50%;
+				background: $darkBlue;
+				border: 1px solid #2e2f3b;
+				box-sizing: border-box;
+				&.active, &:hover {
+					background: #1d1e26;
+				}
+				&:nth-child(1) {
+					border-left: none;
+				}
+				&:nth-child(2) {
+					border-left: none;
+					border-right: none;
+				}
+				&:nth-child(3){
+					border-left: none;
+					border-top: none;
+				}
+				&:nth-child(4) {
+					border-left: none;
+					border-right: none;
+					border-top: none;
+				}
+			}
+		}
+	}
+	.contentWrap {
+		position: static;
+		height: auto;
+		margin-top: 40px;
+		.gibBtn {
+			margin-top: 40px;
+			margin-bottom: 35px;
+		}
+	}
+	.infoBar {
+		position: static;
+		margin-bottom: 40px;
+		.barContainer {
+			flex-wrap: wrap;
+			.item {
+				width: 100%;
+				padding: 75px 15px 15px;
+				border-bottom: 1px solid $border;
+				&:before {
+					top: 15px;
+				}
+			}
+		}
+	}
+	.formContainer {
+		margin-bottom: 35px;
+		font-size: 14px;
+		.changeList {
+			height: auto;
+			.question {
+				width: 100%;
+				justify-content: space-between!important;
+			}
+		}
+	}
+	footer {
+		position: relative;
+	}
+}

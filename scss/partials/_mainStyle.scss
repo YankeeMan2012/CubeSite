@@ -50,7 +50,7 @@ header {
 			text-align: center;
 			user-select: none;
 			&.active, &:hover {
-				background: #15151a;
+				background: $formBack;
 			}
 		}
 	}
@@ -266,6 +266,9 @@ header {
 				justify-content: center;
 				user-select: none;
 				cursor: pointer;
+				box-sizing: border-box;
+				padding: 10px;
+				text-align: center;
 			}
 			&:nth-child(2n) {
 				background: #f1f2f8;
@@ -388,6 +391,7 @@ header {
 			align-items: center;
 			justify-content: space-between;
 			.rightArrow {
+				margin: 0 8px;
 				min-width: 7px;
 				min-height: 14px;
 				background: url("../img/icon/next.png") center center / cover no-repeat;
@@ -470,6 +474,10 @@ header {
 				outline: none;
 				margin: 0 5px;
 			}
+			span {
+				display: flex;
+				align-items: center;
+			}
 		}
 		.design {
 			.individual.active {
@@ -535,8 +543,8 @@ footer {
 	min-height: 85px;
 	background: $darkBlue;
 	.footerContainer {
-		width: 960px;
-		height: 85px;
+		max-width: 960px;
+		min-height: 85px;
 		padding: 0 10px;
 		box-sizing: border-box;
 		margin: 0 auto;
