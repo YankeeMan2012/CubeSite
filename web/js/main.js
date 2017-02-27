@@ -15,18 +15,19 @@ var AppJS = {
     },
 
     handlers: function () {
-        $('.choiceMethod li').on(    'click',   function()  { AppJS.callMethod($(this)); });
-        $('.showCallBack').on(       'click',   function()  { AppJS.switchCallBack(); });
-        $('.callBackForm button').on('click',   function(e) { AppJS.ajaxSubmit(e, $(this)); });
-        $('.gibBtn, .up').on(        'click',   function()  { AppJS.rotateSite(); });
-        $('.changeControl').on(      'click',   function(e) { AppJS.changeControl(e, $(this)); });
-        $('.status').on(             'click',   function()  { AppJS.changeItem($(this)); AppJS.calculateSum(); });
-        $('.changeItem button').on(  'click',   function()  { AppJS.changeBtn($(this)); AppJS.calculateSum(); });
-        $('.openPf').on(             'click',   function()  { AppJS.pfShow(); });
-        $('.pfClose').on(            'click',   function()  { AppJS.pfHide(); });
-        $('.calculate').on(          'keypress',function(e) { AppJS.onlyPattern(e, $(this)); });
-        $('.calculate').on(          'input',   function()  { AppJS.calculateSum(); });
-        $('#select').on(             'change',  function()  { AppJS.calculateSum(); });
+        $('.choiceMethod .methodItem').on(  'click',   function()  { AppJS.callMethod($(this)); });
+        $('.showCallBack').on(              'click',   function()  { AppJS.switchCallBack(); });
+        $('.callBackForm button').on(       'click',   function(e) { AppJS.ajaxSubmit(e, $(this)); });
+        $('.gibBtn, .up').on(               'click',   function()  { AppJS.rotateSite(); });
+        $('.changeControl').on(             'click',   function(e) { AppJS.changeControl(e, $(this)); });
+        $('.status').on(                    'click',   function()  { AppJS.changeItem($(this)); AppJS.calculateSum(); });
+        $('.changeItem button').on(         'click',   function()  { AppJS.changeBtn($(this)); AppJS.calculateSum(); });
+        $('.openPf').on(                    'click',   function()  { AppJS.pfShow(); });
+        $('.pfClose').on(                   'click',   function()  { AppJS.pfHide(); });
+        $('.overlay').on(                   'click',   function()  { AppJS.hideModal(); });
+        $('.calculate').on(                 'keypress',function(e) { AppJS.onlyPattern(e, $(this)); });
+        $('.calculate').on(                 'input',   function()  { AppJS.calculateSum(); });
+        $('#select').on(                    'change',  function()  { AppJS.calculateSum(); });
     },
 
     onlyPattern: function(e, el) {
@@ -35,6 +36,10 @@ var AppJS = {
         if (!test || val.length > 5) {
             e.preventDefault();
         }
+    },
+
+    hideModal: function () {
+        $('.show, .pfShow').removeClass('show pfShow');
     },
 
     ajaxSubmit: function (e, submit) {
@@ -56,7 +61,15 @@ var AppJS = {
             spaceBetween: -180,
             nextButton: '.swiper-next',
             prevButton: '.swiper-prev',
-            initialSlide: initial
+            initialSlide: initial,
+            breakpoints: {
+                400: {
+                    spaceBetween: -50
+                },
+                650: {
+                    spaceBetween: -120
+                },
+            }
         });
         AppJS.sliderLevel();
         pfSlider.on('SlideChangeStart', function () {
@@ -94,13 +107,13 @@ var AppJS = {
         }
     },
 
-    callMethod: function (li) {
-        var name = li.attr('data-target');
-        var siblings = li.siblings('li');
-        var form = li.closest('.callBack').find('form');
+    callMethod: function (item) {
+        var name = item.attr('data-target');
+        var siblings = item.closest('.choiceMethod').find('.methodItem');
+        var form = item.closest('.callBack').find('form');
         siblings.removeClass('active');
-        li.addClass('active');
-        form.attr('id', 'method' + (li.index() + 1));
+        item.addClass('active');
+        form.attr('id', 'method' + (item.closest('.methodWrap').index() + 1));
         form.find('input').removeAttr('name').removeClass('submitField');
         form.find('.' + name).attr('name', name).addClass('submitField');
     },
