@@ -257,6 +257,7 @@ header {
 			align-items: center;
 			flex-direction: row;
 			cursor: pointer;
+			background: #fff;
 			.designType {
 				width: 50%;
 				height: 100%;
@@ -299,6 +300,57 @@ header {
 			&:nth-child(12) .icon:before {
 				background: url("../img/icon/admin-with-cogwheels.svg") center center / cover no-repeat;
 			}
+			&.showQuestion:hover {
+				.question {
+					z-index: 10;
+				}
+			}
+		}
+		.itemDescription {
+			position: absolute;
+			font-size: 12px;
+			padding: 8px 10px;
+			box-sizing: border-box;
+			width: 224px;
+			border-radius: 10px;
+			left: 50%;
+			bottom: 100%;
+			background: #fff;
+			border: 1px solid $darkBlue;
+			z-index: -15;
+			margin-left: -112px;
+			color: $darkBlue;
+			transition: opacity .2s linear;
+			opacity: 0;
+			&:before {
+				content: '';
+				position: absolute;
+				left: 50%;
+				margin-left: -18px;
+				bottom: -11px;
+				width: 27px;
+				height: 12px;
+				background: url("../img/icon/arrow.png") center center / cover no-repeat;
+			}
+		}
+		.designType, .engine {
+			position: relative;
+			.itemDescription {
+				top: 90%;
+				bottom: auto;
+				&:before {
+					transform: rotate(180deg);
+					top: -11px;
+				}
+			}
+		}
+		.designType, .icon, .engine {
+			&:hover {
+				.itemDescription {
+					z-index: 15;
+					opacity: 1;
+				}
+			}
 		}
 		.status, .icon {
 			min-width: 80px;
@@ -325,41 +377,6 @@ header {
 			background: $lightRed;
 			&:before {
 				background: url("../img/icon/close.svg") center center / cover no-repeat;
-			}
-		}
-		.icon {
-			.itemDescription {
-				position: absolute;
-				font-size: 12px;
-				padding: 8px 10px;
-				box-sizing: border-box;
-				width: 224px;
-				border-radius: 10px;
-				left: 50%;
-				bottom: 100%;
-				background: #fff;
-				border: 1px solid $darkBlue;
-				z-index: -15;
-				margin-left: -112px;
-				color: $darkBlue;
-				transition: opacity .2s linear;
-				opacity: 0;
-				&:before {
-					content: '';
-					position: absolute;
-					left: 50%;
-					margin-left: -18px;
-					bottom: -11px;
-					width: 27px;
-					height: 12px;
-					background: url("../img/icon/arrow.png") center center / cover no-repeat;
-				}
-			}
-			&:hover {
-				.itemDescription {
-					z-index: 15;
-					opacity: 1;
-				}
 			}
 		}
 		.description {
@@ -407,11 +424,11 @@ header {
 			left: 0;
 			background: $darkBlue;
 			color: #fff;
-			display: none;
+			display: flex;
 			justify-content: flex-end;
 			align-items: center;
 			line-height: 17px;
-			z-index: 10;
+			z-index: -1;
 			padding: 0 20px;
 			box-sizing: border-box;
 			button {
@@ -442,6 +459,7 @@ header {
 				}
 			}
 			input {
+				font-family: 'cd_regular', sans-serif;
 				width: 45px;
 				height: 24px;
 				border: 1px solid $border;
@@ -453,18 +471,14 @@ header {
 				margin: 0 5px;
 			}
 		}
-		.active ~ .question, .active .question {
-			display: flex;
-		}
-
-
 		.design {
+			.individual.active {
+				& ~ .question {
+					z-index: 10;
+				}
+			}
 			.question {
 				justify-content: flex-end;
-			}
-			.individual.active + .question {
-				left: auto;
-				right: 0;
 			}
 			.checked {
 				background: $green;

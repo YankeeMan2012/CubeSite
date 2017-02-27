@@ -15,16 +15,26 @@ var AppJS = {
     },
 
     handlers: function () {
-        $('.choiceMethod li').on('click', function()  { AppJS.callMethod($(this)); });
-        $('.showCallBack').on('click', function()  { AppJS.switchCallBack(); });
-        $('.callBackForm button').on('click', function(e)  { AppJS.ajaxSubmit(e, $(this)); });
-        $('.gibBtn, .up').on('click', function()  { AppJS.rotateSite(); });
-        $('.changeControl').on('click', function(e)  { AppJS.changeControl(e, $(this)); });
-        $('.changeItem button').on('click', function()  { AppJS.changeBtn($(this)); AppJS.calculateSum(); });
-        $('.openPf').on('click', function()  { AppJS.pfShow(); });
-        $('.pfClose').on('click', function()  { AppJS.pfHide(); });
-        $('.calculate').on('input', function()  { AppJS.calculateSum(); });
-        $('#select').on('change', function()  { AppJS.calculateSum(); });
+        $('.choiceMethod li').on(    'click',   function()  { AppJS.callMethod($(this)); });
+        $('.showCallBack').on(       'click',   function()  { AppJS.switchCallBack(); });
+        $('.callBackForm button').on('click',   function(e) { AppJS.ajaxSubmit(e, $(this)); });
+        $('.gibBtn, .up').on(        'click',   function()  { AppJS.rotateSite(); });
+        $('.changeControl').on(      'click',   function(e) { AppJS.changeControl(e, $(this)); });
+        $('.status').on(             'click',   function()  { AppJS.changeItem($(this)); AppJS.calculateSum(); });
+        $('.changeItem button').on(  'click',   function()  { AppJS.changeBtn($(this)); AppJS.calculateSum(); });
+        $('.openPf').on(             'click',   function()  { AppJS.pfShow(); });
+        $('.pfClose').on(            'click',   function()  { AppJS.pfHide(); });
+        $('.calculate').on(          'keypress',function(e) { AppJS.onlyPattern(e, $(this)); });
+        $('.calculate').on(          'input',   function()  { AppJS.calculateSum(); });
+        $('#select').on(             'change',  function()  { AppJS.calculateSum(); });
+    },
+
+    onlyPattern: function(e, el) {
+        var val = el.val() + String.fromCharCode(e.charCode);
+        var test = /^[1-9]*$/.test(val);
+        if (!test || val.length > 5) {
+            e.preventDefault();
+        }
     },
 
     ajaxSubmit: function (e, submit) {
@@ -68,26 +78,19 @@ var AppJS = {
     },
 
     changeBtn: function (btn) {
-        var ctatus = btn.closest('.changeItem').find('.status');
+        var status = btn.closest('.changeItem').find('.status');
         var question = btn.closest('.question');
+        var catalog = status.closest('.catalog');
         if (btn.hasClass('ok')) {
-            ctatus.removeClass('noChecked').addClass('checked');
+            btn.closest('.design').find('.active').removeClass('active');
+            status.removeClass('noChecked').addClass('checked');
+            catalog.removeClass('showQuestion');
+            setTimeout(function () {
+                catalog.addClass('showQuestion');
+            }, 10);
         } else if (btn.hasClass('no')) {
-            ctatus.removeClass('checked').addClass('noChecked');
-        }
-        AppJS.nextStep(question);
-    },
-
-    nextStep: function (question) {
-        $('.active').removeClass('active');
-        var num = +question.attr('data-question') + 1;
-        var nextQuestion = $('[data-question="'+ num +'"]');
-        var control = nextQuestion.closest('.changeControl');
-        var status = control.find('.status');
-        if (status.hasClass('checked') || status.hasClass('noChecked')) {
-            AppJS.nextStep(nextQuestion);
-        } else {
-            control.addClass('active');
+            catalog.removeClass('showQuestion');
+            status.removeClass('checked').addClass('noChecked');
         }
     },
 
@@ -104,13 +107,17 @@ var AppJS = {
 
     changeControl: function (e, control) {
         if ($(e.target).closest('.question').length) return;
-        var allControl = $('.changeControl');
-        if (control.is('.designType')) {
-            $('.designType').removeClass('checked');
-            control.addClass('checked');
+        $('.designType').removeClass('checked active');
+        control.addClass('checked active');
+        AppJS.calculateSum();
+    },
+
+    changeItem: function (status) {
+        var changeItem = status.closest('.changeItem');
+        status.toggleClass('checked noChecked');
+        if (changeItem.hasClass('catalog')) {
+            changeItem.toggleClass('showQuestion');
         }
-        allControl.removeClass('active');
-        control.addClass('active');
     },
 
     switchCallBack: function () {
@@ -135,27 +142,44 @@ var AppJS = {
         var resPrice = 0;
         var resTime = 0;
 
+
+        var adaptive = $('.adaptive');
+        if (adaptive.hasClass('checked')) {
+            var adaptiveKey = adaptive.attr('data-key');
+            resTime += params[adaptiveKey].time;
+            resPrice += params[adaptiveKey].price;
+        }
+
         var engineVal = $('#select').val();
         resTime += params.engine[engineVal].time;
         resPrice += params.engine[engineVal].price;
 
         var calculateField = $('.calculate');
         calculateField.each(function () {
-            var fieldKey = $(this).attr('data-key');
-            var val = +$(this).val();
-            resTime += params[fieldKey].time * val;
-            resPrice += params[fieldKey].price * val;
+            var changeItem = $(this).closest('.changeItem');
+            var status = changeItem.find('.status');
+            var active = changeItem.find('.individual');
+            if (status.hasClass('checked') || $(this).hasClass('pageNum') && active.hasClass('checked')) {
+                var fieldKey = $(this).attr('data-key');
+                var val = +$(this).val();
+                resTime += params[fieldKey].time * val;
+                resPrice += params[fieldKey].price * val;
+            }
         });
 
-        var checked = $('.status.checked');
+        var checked = $('.status.checked:not(.noCalculate)');
         checked.each(function () {
             var questionKey = $(this).attr('data-key');
             resTime += params[questionKey].time;
             resPrice += params[questionKey].price;
         });
 
-        resPriceBlock.text(Math.round(resPrice) + ' руб.');
-        resTimeBlock.text(Math.round(resTime) + ' дней.');
+        if (!isNaN(resPrice)) {
+            resPriceBlock.text(Math.round(resPrice) + ' руб.');
+        }
+        if (!isNaN(resTime)) {
+            resTimeBlock.text(Math.round(resTime) + ' дней.');
+        }
     }
 };
 

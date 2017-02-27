@@ -3,6 +3,10 @@ var params = {
         time: 1,
         price: 300
     },
+    adaptive : {
+        time: 5,
+        price: 5000 
+    },
     engine: {
         1: {
             time: 0,
