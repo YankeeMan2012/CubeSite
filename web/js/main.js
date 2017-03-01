@@ -29,11 +29,12 @@ var AppJS = {
         $('.calculate').on(                 'keypress',function(e) { AppJS.onlyPattern(e, $(this)); });
         $('.calculate').on(                 'input',   function()  { AppJS.calculateSum(); });
         $('#select').on(                    'change',  function()  { AppJS.calculateSum(); });
+        window.onresize =                              function()  { AppJS.appleStyle(); };
     },
 
     onlyPattern: function(e, el) {
         var val = el.val() + String.fromCharCode(e.charCode);
-        var test = /^[1-9]*$/.test(val);
+        var test = /^[0-9]*$/.test(val);
         if (!test || val.length > 5) {
             e.preventDefault();
         }
@@ -96,6 +97,7 @@ var AppJS = {
         var question = btn.closest('.question');
         var catalog = status.closest('.catalog');
         if (btn.hasClass('ok')) {
+            question.removeClass('noPay').addClass('pay');
             btn.closest('.design').find('.active').removeClass('active');
             status.removeClass('noChecked').addClass('checked');
             catalog.removeClass('showQuestion');
@@ -103,6 +105,7 @@ var AppJS = {
                 catalog.addClass('showQuestion');
             }, 10);
         } else if (btn.hasClass('no')) {
+            question.removeClass('pay').addClass('noPay');
             catalog.removeClass('showQuestion');
             status.removeClass('checked').addClass('noChecked');
         }
@@ -199,17 +202,17 @@ var AppJS = {
     deviceDetect: function () {
         var user = detect.parse(navigator.userAgent);
         var deviceFamily = user.device.family;
-        var isBadBrowser = (deviceFamily === 'iPhone' || deviceFamily === 'iPad');
-        if (isBadBrowser) {
-            AppJS.appleStyle();
-        }
+        AppJS.isBadBrowser = (deviceFamily === 'iPhone' || deviceFamily === 'iPad');
+        AppJS.appleStyle();
     },
 
     appleStyle: function () {
-        var height = window.innerHeight;
-        $('body').addClass('apple');
-        $('.cube, .side').css({'height': height});
-    },
+        if (AppJS.isBadBrowser) {
+            var height = window.innerHeight;
+            $('body').addClass('apple');
+            $('.cube, .side').css({'height': height});
+        }
+    }
 };
 
 
