@@ -7,6 +7,7 @@ var AppJS = {
     ready: function () {
         AppJS.handlers();
         AppJS.sliderInit();
+        AppJS.deviceDetect();
         $('.customScroll').mCustomScrollbar({
             scrollInertia: 200,
             theme: 'dark',
@@ -193,7 +194,22 @@ var AppJS = {
         if (!isNaN(resTime)) {
             resTimeBlock.text(Math.round(resTime) + ' дней.');
         }
-    }
+    },
+
+    deviceDetect: function () {
+        var user = detect.parse(navigator.userAgent);
+        var deviceFamily = user.device.family;
+        var isBadBrowser = (deviceFamily === 'iPhone' || deviceFamily === 'iPad');
+        if (isBadBrowser) {
+            AppJS.appleStyle();
+        }
+    },
+
+    appleStyle: function () {
+        var height = window.innerHeight;
+        $('body').addClass('apple');
+        $('.cube, .side').css({'height': height});
+    },
 };
 
 

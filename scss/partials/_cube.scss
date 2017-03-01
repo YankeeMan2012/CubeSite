@@ -46,3 +46,14 @@
 	50%  {transform: rotateX(45deg) scale(.94);}
 	100% {transform: rotateX(90deg);}
 }
+
+
+.apple {
+	.wrapper {
+		perspective: none;
+	}
+
+	.cube, .side {
+		transform-origin: 50% 50% 0;
+	}
+}
