@@ -11,21 +11,24 @@ var concatJs     = require('gulp-concat');
 var paths = {
     src: {
         styles: {
-            app: 'scss/style.scss',
-            appAll: 'scss/**/*.scss',
+            app: 'src/scss/style.scss',
+            appAll: 'src/scss/**/*.scss',
             libs: [
                 './node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css',
                 './node_modules/swiper/dist/css/swiper.min.css'
             ]
         },
         scripts: {
-            app: [],
+            appAll: [
+                './src/js/main.js'
+            ],
             libs: [
-                './node_modules/element-closest/element-closest.js',
+                // './node_modules/element-closest/element-closest.js',
                 './node_modules/jquery/dist/jquery.min.js',
-                './node_modules/jquery.maskedinput/src/jquery.maskedinput.js',
+                // './node_modules/jquery.maskedinput/src/jquery.maskedinput.js',
                 './node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js',
-                './node_modules/swiper/dist/js/swiper.jquery.js'
+                './node_modules/swiper/dist/js/swiper.jquery.js',
+                './src/js/detect.js'
             ]
         }
     },
@@ -42,7 +45,7 @@ var paths = {
         },
         scripts: {
             app: {
-                file: 'script.js',
+                file: 'main.js',
                 dir: './web/js'
             },
             libs: {
@@ -80,15 +83,25 @@ gulp.task('libsJs', function() {
         // .pipe(notify('Done!'))
 });
 
+gulp.task('js', function() {
+    return gulp.src(paths.src.scripts.appAll)
+        .pipe(concatJs(paths.dist.scripts.app.file))
+        .pipe(uglifyJs())
+        .pipe(gulp.dest(paths.dist.scripts.app.dir));
+    // .pipe(notify('Done!'))
+});
+
 gulp.task('watch',function(){
     gulp.watch([paths.src.styles.libs],  ['libsCss'] );
     gulp.watch([paths.src.styles.appAll],  ['scss'] );
     // gulp.watch([paths.src.scripts.libs], ['libsJs']  );
+    gulp.watch([paths.src.scripts.appAll], ['js']  );
 });
 
 gulp.task('default', [
     'scss',
     'libsCss',
     'libsJs',
+    'js',
     'watch'
 ]);
