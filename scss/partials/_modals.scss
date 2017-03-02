@@ -244,6 +244,7 @@
 			transform-origin: 50% 100% 0;
 			z-index: 2;
 			.imgBox {
+				display: block;
 				border: 1px solid $darkBlue;
 				margin-top: 10px;
 				height: calc(100% - 10px);

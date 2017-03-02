@@ -111,14 +111,16 @@ header {
 		justify-content: space-around;
 		align-items: center;
 		min-height: 120px;
+		box-sizing: border-box;
+		padding: 10px 0;
 	}
 	.item {
-		width: 16%;
+		width: 25%;
 		box-sizing: border-box;
-		padding-top: 60px;
+		padding: 60px 5px 5px;
 		position: relative;
 		text-align: center;
-		font-size: 14px;
+		font-size: 22px;
 		&:before {
 			content: '';
 			position: absolute;
@@ -332,10 +334,13 @@ header {
 				}
 			}
 		}
+		.icon {
+			border-left: 1px solid $border;
+			border-right: 1px solid $border;
+		}
 		.status, .icon {
 			min-width: 80px;
 			height: 100%;
-			border-right: 1px solid $border;
 			position: relative;
 			&:before {
 				content: '';
@@ -347,15 +352,25 @@ header {
 				height: 40px;
 			}
 		}
+		.statusWrap {
+			perspective: 1200px;
+			min-width: 80px;
+			height: 100%;
+		}
 		.status.checked {
 			background: $green;
+			animation: rotateChecked .5s normal linear;
+
 			&:before {
+				transition-delay: .25s;
 				background: url("../img/icon/check.svg") center center / cover no-repeat;
 			}
 		}
 		.status.noChecked {
 			background: $lightRed;
+			animation: rotateNoChecked .5s normal linear;
 			&:before {
+				transition-delay: .25s;
 				background: url("../img/icon/close.svg") center center / cover no-repeat;
 			}
 		}
@@ -582,4 +597,26 @@ footer {
 		margin-left: -10px;
 		transform: rotate(45deg);
 	}
+}
+
+@keyframes rotateNoChecked {
+	0%   {transform: rotateY(0deg); background: $green;}
+	49%  {
+		background: $green;
+	}
+	50%  {
+		background: $red;
+	}
+	100% {transform: rotateY(180deg); background: $red;}
+}
+
+@keyframes rotateChecked {
+	0%   {transform: rotateY(180deg); background: $red;}
+	49%  {
+		background: $red;
+	}
+	50%  {
+		background: $green;
+	}
+	100% {transform: rotateY(0deg); background: $green;}
 }
