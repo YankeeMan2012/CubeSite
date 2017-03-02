@@ -455,6 +455,16 @@ header {
 				display: flex;
 				align-items: center;
 			}
+			&.pay {
+				.ok {
+					box-shadow: 0 0 4px 3px $green;
+				}
+			}
+			&.noPay {
+				.no {
+					box-shadow: 0 0 4px 3px $red;
+				}
+			}
 		}
 		.design {
 			.individual.active {

@@ -8,6 +8,7 @@ var AppJS = {
         AppJS.handlers();
         AppJS.sliderInit();
         AppJS.deviceDetect();
+        AppJS.calculateSum();
         $('.customScroll').mCustomScrollbar({
             scrollInertia: 200,
             theme: 'dark',
@@ -29,7 +30,7 @@ var AppJS = {
         $('.calculate').on(                 'keypress',function(e) { AppJS.onlyPattern(e, $(this)); });
         $('.calculate').on(                 'input',   function()  { AppJS.calculateSum(); });
         $('#select').on(                    'change',  function()  { AppJS.calculateSum(); });
-        window.onresize =                              function()  { AppJS.appleStyle(); };
+        window.onresize =                              function()  { AppJS.deviceDetect(); };
     },
 
     onlyPattern: function(e, el) {
@@ -96,19 +97,17 @@ var AppJS = {
         var status = btn.closest('.changeItem').find('.status');
         var question = btn.closest('.question');
         var catalog = status.closest('.catalog');
+        var isPay = question.hasClass('onlinePay');
         if (btn.hasClass('ok')) {
-            question.removeClass('noPay').addClass('pay');
+            if (isPay) question.removeClass('noPay').addClass('pay');
             btn.closest('.design').find('.active').removeClass('active');
-            status.removeClass('noChecked').addClass('checked');
-            catalog.removeClass('showQuestion');
-            setTimeout(function () {
-                catalog.addClass('showQuestion');
-            }, 10);
-        } else if (btn.hasClass('no')) {
+        } else if (btn.hasClass('no') && isPay) {
             question.removeClass('pay').addClass('noPay');
-            catalog.removeClass('showQuestion');
-            status.removeClass('checked').addClass('noChecked');
         }
+        catalog.removeClass('showQuestion');
+        setTimeout(function () {
+            catalog.addClass('showQuestion');
+        }, 10);
     },
 
     callMethod: function (item) {
@@ -131,6 +130,7 @@ var AppJS = {
 
     changeItem: function (status) {
         var changeItem = status.closest('.changeItem');
+        changeItem.find('.onlinePay').removeClass('pay noPay');
         status.toggleClass('checked noChecked');
         if (changeItem.hasClass('catalog')) {
             changeItem.toggleClass('showQuestion');
@@ -191,6 +191,13 @@ var AppJS = {
             resPrice += params[questionKey].price;
         });
 
+        var onlinePay = $('.onlinePay.pay');
+        if (onlinePay.length) {
+            var payKey = onlinePay.attr('data-key');
+            resTime += params[payKey].time;
+            resPrice += params[payKey].price;
+        }
+
         if (!isNaN(resPrice)) {
             resPriceBlock.text(Math.round(resPrice) + ' руб.');
         }
@@ -207,10 +214,15 @@ var AppJS = {
     },
 
     appleStyle: function () {
+        var body = $('body');
+        var cube = $('.cube, .side');
         if (AppJS.isBadBrowser) {
             var height = window.innerHeight;
-            $('body').addClass('apple');
-            $('.cube, .side').css({'height': height});
+            body.addClass('apple');
+            cube.css({'height': height});
+        } else {
+            body.removeClass('apple');
+            cube.css({'height': '100vh'});
         }
     }
 };

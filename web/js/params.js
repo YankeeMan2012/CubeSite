@@ -51,6 +51,10 @@ var params = {
         time: 1,
         price: 50
     },
+    onlinePay: {
+        time: 1,
+        price: 50
+    },
     multilanguage: {
         time: 1,
         price: 50
