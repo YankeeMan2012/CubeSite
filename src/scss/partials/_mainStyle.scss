@@ -540,6 +540,14 @@ header {
 				}
 			}
 		}
+		.publication, .logotype {
+			.question {
+				display: none;
+				.inputBox {
+					display: flex !important;
+				}
+			}
+		}
 	}
 }
 footer {
