@@ -39,89 +39,11 @@
                     <li class="item">3 месяца бесплатной поддержки</li>
                 </ul>
             </div>
-            <div class="modalBox">
-                <div class="portfolio">
-                    <div class="pfClose"></div>
-                    <div class="pfSlider swiper-container">
-                        <div class="pfSliderWrap swiper-wrapper">
-                            <div class="pfSlide swiper-slide">
-                                Название сайта
-                                <a href="http://rozetka.com.ua/" class="imgBox" target="_blank">
-                                    <img class="preview" src="img/preview.jpg">
-                                </a>
-                            </div>
-                            <div class="pfSlide swiper-slide">
-                                Название сайта
-                                <a href="http://rozetka.com.ua/" class="imgBox" target="_blank">
-                                    <img class="preview" src="img/preview.jpg">
-                                </a>
-                            </div>
-                            <div class="pfSlide swiper-slide">
-                                Название сайта
-                                <a href="http://rozetka.com.ua/" class="imgBox" target="_blank">
-                                    <img class="preview" src="img/preview.jpg">
-                                </a>
-                            </div>
-                            <div class="pfSlide swiper-slide">
-                                Название сайта
-                                <a href="http://rozetka.com.ua/" class="imgBox" target="_blank">
-                                    <img class="preview" src="img/preview.jpg">
-                                </a>
-                            </div>
-                            <div class="pfSlide swiper-slide">
-                                Название сайта
-                                <a href="http://rozetka.com.ua/" class="imgBox" target="_blank">
-                                    <img class="preview" src="img/preview.jpg">
-                                </a>
-                            </div>
-                            <div class="pfSlide swiper-slide">
-                                Название сайта
-                                <a href="http://rozetka.com.ua/" class="imgBox" target="_blank">
-                                    <img class="preview" src="img/preview.jpg">
-                                </a>
-                            </div>
-                            <div class="pfSlide swiper-slide">
-                                Название сайта
-                                <a href="http://rozetka.com.ua/" class="imgBox" target="_blank">
-                                    <img class="preview" src="img/preview.jpg">
-                                </a>
-                            </div>
-                            <div class="pfSlide swiper-slide">
-                                Название сайта
-                                <a href="http://rozetka.com.ua/" class="imgBox" target="_blank">
-                                    <img class="preview" src="img/preview.jpg">
-                                </a>
-                            </div>
-                            <div class="pfSlide swiper-slide">
-                                Название сайта
-                                <a href="http://rozetka.com.ua/" class="imgBox" target="_blank">
-                                    <img class="preview" src="img/preview.jpg">
-                                </a>
-                            </div>
-                            <div class="pfSlide swiper-slide">
-                                Название сайта
-                                <a href="http://rozetka.com.ua/" class="imgBox" target="_blank">
-                                    <img class="preview" src="img/preview.jpg">
-                                </a>
-                            </div>
-                            <div class="pfSlide swiper-slide">
-                                Название сайта
-                                <a href="http://rozetka.com.ua/" class="imgBox" target="_blank">
-                                    <img class="preview" src="img/preview.jpg">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="pfNav swiper-prev"></div>
-                        <div class="pfNav swiper-next"></div>
-                    </div>
-                </div>
-                <div class="overlay"></div>
-            </div>
         </div>
         <div class="side second">
             <div class="formContainer">
                 <div class="changeList customScroll">
-                    <div class="changeItem design">
+                    <div class="changeItem design" data-key="page">
                         <div class="changeControl designType active checked individual">
                             Индивидуальный дизайн
                             <div class="itemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </div>
@@ -131,7 +53,7 @@
                             <div class="itemDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </div>
                         </div>
                         <div class="question">количество страниц:
-                            <span><input data-key="page" class="pageNum calculate"> шт <button class="ok">ок</button></span>
+                            <span><input class="pageNum calculate"> шт <button class="ok">ок</button></span>
                         </div>
                     </div>
                     <div class="changeItem engine">
@@ -163,7 +85,7 @@
                         </div>
                         <div class="description">Контакты/карта проезда?</div>
                     </div>
-                    <div class="changeItem">
+                    <div class="changeItem questionBox publication" data-key="publication">
                         <div class="statusWrap">
                             <div class="status noChecked noCalculate"></div>
                         </div>
@@ -172,11 +94,15 @@
                         </div>
                         <div class="description">Наполнение уникальными продающими текстами
                             <div class="rightArrow"></div>
-                            <div class="inputBox">кол-во публикаций <input data-key="publication" class="calculate" type="text" value="13"> шт</div>
-                            <div class="inputBox small">обьем <input data-key="wordsNum" class="calculate" type="text" value="3000"> слов</div>
+                            <div class="inputBox">кол-во публикаций <input class="pubInput publicNum" data-duplicate="dPublicNum" type="text" value="13"> шт</div>
+                            <div class="inputBox small">обьем <input class="pubInput words" type="text" data-duplicate="dWords" value="3000"> слов</div>
+                        </div>
+                        <div class="question">
+                            <div class="inputBox margin">кол-во публикаций <input class="pubInput duplicate dPublicNum" data-real="publicNum" type="text" value="13"> шт.</div>
+                            <div class="inputBox small">обьем <input class="pubInput duplicate dWords" data-real="words" type="text" value="3000"> слов</div>
                         </div>
                     </div>
-                    <div class="changeItem catalog">
+                    <div class="changeItem questionBox catalog">
                         <div class="statusWrap">
                             <div class="status noChecked" data-key="catalog"></div>
                         </div>
@@ -226,7 +152,7 @@
                         </div>
                         <div class="description">Создание корпоративной почты</div>
                     </div>
-                    <div class="changeItem logotype">
+                    <div class="changeItem questionBox showQuestion logotype" data-key="logo">
                         <div class="statusWrap">
                             <div class="status checked noCalculate"></div>
                         </div>
@@ -235,7 +161,10 @@
                         </div>
                         <div class="description">Разработка логотипа
                             <div class="rightArrow"></div>
-                            <div class="inputBox">количество вариантов: <input data-key="logo" class="calculate" type="text" value="13"> шт</div>
+                            <div class="inputBox">количество вариантов: <input class="logoField devLogo" data-duplicate="dDevLogo" type="text" value="13"> шт</div>
+                        </div>
+                        <div class="question">
+                            <div class="inputBox">количество вариантов: <input class="logoField dDevLogo duplicate" data-real="devLogo" type="text" value="13"> шт</div>
                         </div>
                     </div>
                     <div class="changeItem">
@@ -267,36 +196,117 @@
                     <div class="button showCallBack">ЗАКАЗАТЬ ПРОДАЮЩИЙ САЙТ</div>
                 </div>
             </footer>
-            <div class="modalBox">
-                <div class="callBack">
-                    <div class="question">Как можно с вами связаться для уточнения деталей?</div>
-                    <div class="choiceMethod">
-                        <div class="methodWrap">
-                            <div class="methodItem" data-target="telephone"></div>
-                        </div>
-                        <div class="methodWrap">
-                            <div class="methodItem active" data-target="whatsapp"></div>
-                        </div>
-                        <div class="methodWrap">
-                            <div class="methodItem" data-target="skype"></div>
-                        </div>
-                        <div class="methodWrap">
-                            <div class="methodItem" data-target="email"></div>
-                        </div>
 
-                    </div>
-                    <form action="mail.php" method="post" class="callBackForm" id="method2">
-                        <input name=""          class="telephone" type="text" placeholder="Номер телефона">
-                        <input name="whatsapp"  class="whatsapp" type="text" placeholder="Логин WhatSapp">
-                        <input name=""          class="skype" type="text" placeholder="Логин Skype">
-                        <input name=""          class="email" type="text" placeholder="Ваш E-mail">
-                        <button type="submit">Связаться со мной</button>
-                    </form>
-                </div>
-                <div class="overlay"></div>
-            </div>
         </div>
     </div>
+</div>
+
+<div class="modalBox">
+    <div class="portfolio">
+        <div class="pfClose"></div>
+        <div class="pfSlider swiper-container">
+            <div class="pfSliderWrap swiper-wrapper">
+                <div class="pfSlide swiper-slide">
+                    Название сайта
+                    <a href="http://rozetka.com.ua/" class="imgBox" target="_blank">
+                        <img class="preview" src="img/preview.jpg">
+                    </a>
+                </div>
+                <div class="pfSlide swiper-slide">
+                    Название сайта
+                    <a href="http://rozetka.com.ua/" class="imgBox" target="_blank">
+                        <img class="preview" src="img/preview.jpg">
+                    </a>
+                </div>
+                <div class="pfSlide swiper-slide">
+                    Название сайта
+                    <a href="http://rozetka.com.ua/" class="imgBox" target="_blank">
+                        <img class="preview" src="img/preview.jpg">
+                    </a>
+                </div>
+                <div class="pfSlide swiper-slide">
+                    Название сайта
+                    <a href="http://rozetka.com.ua/" class="imgBox" target="_blank">
+                        <img class="preview" src="img/preview.jpg">
+                    </a>
+                </div>
+                <div class="pfSlide swiper-slide">
+                    Название сайта
+                    <a href="http://rozetka.com.ua/" class="imgBox" target="_blank">
+                        <img class="preview" src="img/preview.jpg">
+                    </a>
+                </div>
+                <div class="pfSlide swiper-slide">
+                    Название сайта
+                    <a href="http://rozetka.com.ua/" class="imgBox" target="_blank">
+                        <img class="preview" src="img/preview.jpg">
+                    </a>
+                </div>
+                <div class="pfSlide swiper-slide">
+                    Название сайта
+                    <a href="http://rozetka.com.ua/" class="imgBox" target="_blank">
+                        <img class="preview" src="img/preview.jpg">
+                    </a>
+                </div>
+                <div class="pfSlide swiper-slide">
+                    Название сайта
+                    <a href="http://rozetka.com.ua/" class="imgBox" target="_blank">
+                        <img class="preview" src="img/preview.jpg">
+                    </a>
+                </div>
+                <div class="pfSlide swiper-slide">
+                    Название сайта
+                    <a href="http://rozetka.com.ua/" class="imgBox" target="_blank">
+                        <img class="preview" src="img/preview.jpg">
+                    </a>
+                </div>
+                <div class="pfSlide swiper-slide">
+                    Название сайта
+                    <a href="http://rozetka.com.ua/" class="imgBox" target="_blank">
+                        <img class="preview" src="img/preview.jpg">
+                    </a>
+                </div>
+                <div class="pfSlide swiper-slide">
+                    Название сайта
+                    <a href="http://rozetka.com.ua/" class="imgBox" target="_blank">
+                        <img class="preview" src="img/preview.jpg">
+                    </a>
+                </div>
+            </div>
+            <div class="pfNav swiper-prev"></div>
+            <div class="pfNav swiper-next"></div>
+        </div>
+    </div>
+    <div class="overlay"></div>
+</div>
+
+<div class="modalBox">
+    <div class="callBack">
+        <div class="question">Как можно с вами связаться для уточнения деталей?</div>
+        <div class="choiceMethod">
+            <div class="methodWrap">
+                <div class="methodItem" data-target="telephone"></div>
+            </div>
+            <div class="methodWrap">
+                <div class="methodItem active" data-target="whatsapp"></div>
+            </div>
+            <div class="methodWrap">
+                <div class="methodItem" data-target="skype"></div>
+            </div>
+            <div class="methodWrap">
+                <div class="methodItem" data-target="email"></div>
+            </div>
+
+        </div>
+        <form action="mail.php" method="post" class="callBackForm" id="method2">
+            <input name=""          class="telephone" type="text" placeholder="Номер телефона">
+            <input name="whatsapp"  class="whatsapp" type="text" placeholder="Логин WhatSapp">
+            <input name=""          class="skype" type="text" placeholder="Логин Skype">
+            <input name=""          class="email" type="text" placeholder="Ваш E-mail">
+            <button type="submit">Связаться со мной</button>
+        </form>
+    </div>
+    <div class="overlay"></div>
 </div>
 
 <div class="up">
@@ -310,5 +320,7 @@
 <script src="js/libs/libs.js"></script>
 <script src="js/params.js"></script>
 <script src="js/main.js"></script>
+<link rel="stylesheet" href="https://cdn.envybox.io/widget/cbk.css">
+<script type="text/javascript" src="https://cdn.envybox.io/widget/cbk.js?wcb_code=4ce65b7931dc0a65483c7e7a4c8ffa1e" charset="UTF-8" async></script>
 </body>
 </html>

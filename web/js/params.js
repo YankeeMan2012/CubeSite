@@ -26,12 +26,8 @@ var params = {
         }
     },
     publication: {
-        time: .2,
-        price: 200
-    },
-    wordsNum: {
-        time: 0.008,
-        price: 0.15
+        time: .4,
+        price: 50
     },
     logo: {
         time: .5,

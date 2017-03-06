@@ -17,20 +17,22 @@ var AppJS = {
     },
 
     handlers: function () {
-        $('.choiceMethod .methodItem').on(  'click',   function()  { AppJS.callMethod($(this)); });
-        $('.showCallBack').on(              'click',   function()  { AppJS.switchCallBack(); });
-        $('.callBackForm button').on(       'click',   function(e) { AppJS.ajaxSubmit(e, $(this)); });
-        $('.gibBtn, .up').on(               'click',   function()  { AppJS.rotateSite(); });
-        $('.changeControl').on(             'click',   function(e) { AppJS.changeControl(e, $(this)); });
-        $('.status').on(                    'click',   function()  { AppJS.changeItem($(this)); AppJS.calculateSum(); });
-        $('.changeItem button').on(         'click',   function()  { AppJS.changeBtn($(this)); AppJS.calculateSum(); });
-        $('.openPf').on(                    'click',   function()  { AppJS.pfShow(); });
-        $('.pfClose').on(                   'click',   function()  { AppJS.pfHide(); });
-        $('.overlay').on(                   'click',   function()  { AppJS.hideModal(); });
-        $('.calculate').on(                 'keypress',function(e) { AppJS.onlyPattern(e, $(this)); });
-        $('.calculate').on(                 'input',   function()  { AppJS.calculateSum(); });
-        $('#select').on(                    'change',  function()  { AppJS.calculateSum(); });
-        window.onresize =                              function()  { AppJS.deviceDetect(); };
+        $('.choiceMethod .methodItem').on(              'click',   function()  { AppJS.callMethod($(this)); });
+        $('.showCallBack').on(                          'click',   function()  { AppJS.switchCallBack(); });
+        $('.callBackForm button').on(                   'click',   function(e) { AppJS.ajaxSubmit(e, $(this)); });
+        $('.gibBtn, .up').on(                           'click',   function()  { AppJS.rotateSite(); });
+        $('.changeControl').on(                         'click',   function(e) { AppJS.changeControl(e, $(this)); });
+        $('.status').on(                                'click',   function()  { AppJS.changeItem($(this)); AppJS.calculateSum(); });
+        $('.changeItem button').on(                     'click',   function()  { AppJS.changeBtn($(this)); AppJS.calculateSum(); });
+        $('.openPf').on(                                'click',   function()  { AppJS.pfShow(); });
+        $('.pfClose').on(                               'click',   function()  { AppJS.pfHide(); });
+        $('.overlay').on(                               'click',   function()  { AppJS.hideModal(); });
+        $('.calculate, .pubInput, .logoField').on(      'keypress',function(e) { AppJS.onlyPattern(e, $(this)); });
+        $('.calculate, .pubInput, .logoField').on(      'input',   function()  { AppJS.calculateSum(); });
+        $('.duplicate').on(                             'input',   function()  { AppJS.duplicate($(this)); });
+        $('.pubInput, .logoField').on(                  'input',   function()  { AppJS.copyToDuplicate($(this)); });
+        $('#select').on(                                'change',  function()  { AppJS.calculateSum(); });
+        window.onresize =                                          function()  { AppJS.deviceDetect(); };
     },
 
     onlyPattern: function(e, el) {
@@ -96,7 +98,7 @@ var AppJS = {
     changeBtn: function (btn) {
         var status = btn.closest('.changeItem').find('.status');
         var question = btn.closest('.question');
-        var catalog = status.closest('.catalog');
+        var questionBox = status.closest('.questionBox');
         var isPay = question.hasClass('onlinePay');
         if (btn.hasClass('ok')) {
             if (isPay) question.removeClass('noPay').addClass('pay');
@@ -104,9 +106,9 @@ var AppJS = {
         } else if (btn.hasClass('no') && isPay) {
             question.removeClass('pay').addClass('noPay');
         }
-        catalog.removeClass('showQuestion');
+        questionBox.removeClass('showQuestion');
         setTimeout(function () {
-            catalog.addClass('showQuestion');
+            questionBox.addClass('showQuestion');
         }, 10);
     },
 
@@ -132,7 +134,7 @@ var AppJS = {
         var changeItem = status.closest('.changeItem');
         changeItem.find('.onlinePay').removeClass('pay noPay');
         status.toggleClass('checked noChecked');
-        if (changeItem.hasClass('catalog')) {
+        if (changeItem.hasClass('questionBox')) {
             changeItem.toggleClass('showQuestion');
         }
     },
@@ -153,12 +155,23 @@ var AppJS = {
         $('.portfolio').removeClass('pfShow');
     },
 
+    copyToDuplicate: function (origin) {
+        var val = origin.val();
+        var realField = $('.' + origin.attr('data-duplicate'));
+        realField.val(val);
+    },
+
+    duplicate: function (duplicate) {
+        var val = duplicate.val();
+        var realField = $('.' + duplicate.attr('data-real'));
+        realField.val(val);
+    },
+
     calculateSum: function () {
         var resPriceBlock = $('.price span');
         var resTimeBlock = $('.deadline span');
         var resPrice = 0;
         var resTime = 0;
-
 
         var adaptive = $('.adaptive');
         if (adaptive.hasClass('checked')) {
@@ -177,12 +190,32 @@ var AppJS = {
             var status = changeItem.find('.status');
             var active = changeItem.find('.individual');
             if (status.hasClass('checked') || $(this).hasClass('pageNum') && active.hasClass('checked')) {
-                var fieldKey = $(this).attr('data-key');
+                var fieldKey = changeItem.attr('data-key');
                 var val = +$(this).val();
                 resTime += params[fieldKey].time * val;
                 resPrice += params[fieldKey].price * val;
             }
         });
+
+        var pubInput = $('.pubInput');
+        var publicationBox = pubInput.closest('.publication');
+        var publicKey = publicationBox.attr('data-key');
+        var publicNum = publicationBox.find('.publicNum').val();
+        var words = publicationBox.find('.words').val();
+        if (publicationBox.find('.status').hasClass('checked')) {
+            var val = +publicNum * (+words / 1000);
+            resTime += params[publicKey].time * val;
+            resPrice += params[publicKey].price * val;
+        }
+
+        var logoField = $('.logoField');
+        var logotype = logoField.closest('.logotype');
+        var logoKey = logotype.attr('data-key');
+        var logoVal = +logotype.find('.devLogo').val();
+        if (logotype.find('.status').hasClass('checked')) {
+            resTime += params[logoKey].time * logoVal;
+            resPrice += params[logoKey].price * logoVal;
+        }
 
         var checked = $('.status.checked:not(.noCalculate)');
         checked.each(function () {
@@ -209,7 +242,8 @@ var AppJS = {
     deviceDetect: function () {
         var user = detect.parse(navigator.userAgent);
         var deviceFamily = user.device.family;
-        AppJS.isBadBrowser = (deviceFamily === 'iPhone' || deviceFamily === 'iPad');
+        var osFamily = user.os.family;
+        AppJS.isBadBrowser = (deviceFamily === 'iPhone' || deviceFamily === 'iPad' || osFamily === 'iOS');
         AppJS.appleStyle();
     },
 

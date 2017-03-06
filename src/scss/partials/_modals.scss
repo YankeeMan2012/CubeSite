@@ -21,9 +21,9 @@
 .callBack {
 	width: 660px;
 	position: absolute;
-	top: 140px;
+	top: 50%;
 	left: 50%;
-	transform: translateX(-50%);
+	transform: translate(-50%, -50%);
 	border: 1px solid #191919;
 	border-radius: 4px;
 	background: $darkBlue;
@@ -348,5 +348,16 @@
 		.icon {
 			opacity: .8;
 		}
+	}
+}
+
+.callbackkiller {
+	&.cbk-phone {
+		left: auto !important;
+		right: 10% !important;
+		bottom: 200px !important;
+		top: auto!important;
+		//width: 80px !important;
+		//height: 80px !important;
 	}
 }

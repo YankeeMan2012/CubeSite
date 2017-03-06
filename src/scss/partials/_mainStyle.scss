@@ -480,6 +480,11 @@ header {
 					box-shadow: 0 0 4px 3px $red;
 				}
 			}
+			.inputBox {
+				&.margin {
+					margin-right: 8px;
+				}
+			}
 		}
 		.design {
 			.individual.active {

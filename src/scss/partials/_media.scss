@@ -147,7 +147,8 @@
 		position: relative;
 	}
 	.portfolio {
-		top: 270px;
+		top: 50%;
+		transform: translateY(-50%);
 		height: 550px;
 		.pfSliderWrap {
 			transform: scale(.8);
@@ -173,6 +174,16 @@
 			}
 		}
 	}
+	.callbackkiller {
+		&.cbk-phone, &.callbackkiller-mobile {
+			left: auto !important;
+			right: -10px !important;
+			bottom: 120px !important;
+			top: auto!important;
+			//width: 80px !important;
+			//height: 80px !important;
+		}
+	}
 }
 
 @media screen and (max-width: 720px) {
@@ -187,7 +198,7 @@
 		width: calc(100% - 40px);
 		left: 20px;
 		top: 50%;
-		transform: translate(0);
+		transform: translate(0, -50%);
 		padding-bottom: 0;
 		.choiceMethod {
 			flex-wrap: wrap;
@@ -251,7 +262,6 @@
 
 @media screen and (max-width: 420px) {
 	.portfolio {
-		top: 270px;
 		height: 400px;
 		.pfSliderWrap {
 			transform: scale(.8);
