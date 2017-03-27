@@ -101,7 +101,7 @@ gulp.task('watch',function(){
 gulp.task('default', [
     'scss',
     'libsCss',
-    'libsJs',
+    // 'libsJs',
     'js',
     'watch'
 ]);
