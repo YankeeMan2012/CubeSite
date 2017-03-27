@@ -59,7 +59,7 @@ var paths = {
 gulp.task('scss', function () {
     return gulp.src(paths.src.styles.app)
         .pipe(sourcemaps.init())
-        .pipe(sass().on('error', sass.logError))
+        .pipe(sass().on('error', notify.onError()))
         .pipe(autoprefixer('last 5 versions', '> 1%', 'ie 9'))
         .pipe(minifyCss())
         .pipe(sourcemaps.write())
@@ -78,7 +78,7 @@ gulp.task('libsCss', function () {
 gulp.task('libsJs', function() {
     return gulp.src(paths.src.scripts.libs)
         .pipe(concatJs(paths.dist.scripts.libs.file))
-        .pipe(uglifyJs())
+        .pipe(uglifyJs().on('error', notify.onError()))
         .pipe(gulp.dest(paths.dist.scripts.libs.dir));
         // .pipe(notify('Done!'))
 });
@@ -86,7 +86,7 @@ gulp.task('libsJs', function() {
 gulp.task('js', function() {
     return gulp.src(paths.src.scripts.appAll)
         .pipe(concatJs(paths.dist.scripts.app.file))
-        .pipe(uglifyJs())
+        .pipe(uglifyJs().on('error', notify.onError()))
         .pipe(gulp.dest(paths.dist.scripts.app.dir));
     // .pipe(notify('Done!'))
 });

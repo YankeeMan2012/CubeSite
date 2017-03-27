@@ -72,11 +72,19 @@ header {
 		flex-direction: column;
 		justify-content: space-between;
 	}
+	.textSlider {
+		width: 100%;
+	}
 	p {
 		font-family: 'cd_bold', sans-serif;
 		font-size: 48px;
 		color: #fff;
 		text-align: center;
+		opacity: 0;
+		transition: opacity 1s linear;
+	}
+	.swiper-slide-active {
+		opacity: 1;
 	}
 	.gibBtn {
 		height: 96px;
@@ -104,6 +112,7 @@ header {
 	position: absolute;
 	bottom: 85px;
 	left: 0;
+	overflow-y: hidden;
 	.barContainer {
 		max-width: 960px;
 		margin: 0 auto;
@@ -129,6 +138,17 @@ header {
 			width: 50px;
 			height: 50px;
 		}
+		&:after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			margin-top: -100px;
+			right: 0;
+			height: 200px;
+			width: 1px;
+			background: rgba($darkBlue, .5);
+			box-shadow: 0 0 5px 2px rgba($darkBlue, .35);
+		}
 		&:nth-child(1) {
 			&:before {
 				background: url('../img/icon/icon1.png') center center / contain no-repeat;
@@ -147,6 +167,9 @@ header {
 		&:nth-child(4) {
 			&:before {
 				background: url('../img/icon/icon4.png') center center / contain no-repeat;
+			}
+			&:after {
+				display: none;
 			}
 		}
 	}
@@ -290,7 +313,7 @@ header {
 		}
 		.itemDescription {
 			position: absolute;
-			font-size: 12px;
+			font-size: 18px;
 			padding: 8px 10px;
 			box-sizing: border-box;
 			width: 224px;
@@ -547,6 +570,28 @@ header {
 					display: flex !important;
 				}
 			}
+		}
+	}
+	.wish {
+		width: 100%;
+		border-bottom: 1px solid $border;
+		box-sizing: border-box;
+		padding: 10px;
+		label {
+			margin: 0 0 5px 5px;
+			display: block;
+		}
+		textarea {
+			font-size: 16px;
+			color: $darkBlue;
+			padding: 5px 10px;
+			border-radius: 3px;
+			outline: none;
+			resize: none;
+			border: 1px solid $border;
+			width: 100%;
+			height: 50px;
+			box-sizing: border-box;
 		}
 	}
 }

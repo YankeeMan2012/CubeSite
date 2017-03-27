@@ -21,9 +21,9 @@
   },
   "dependencies": {
     "element-closest": "^2.0.2",
-    "jquery": "^2.1.4",
+    "jquery": "^3.2.0",
     "jquery.maskedinput": "^1.4.1",
     "malihu-custom-scrollbar-plugin": "^3.1.5",
-    "swiper": "^3.4.1"
+    "swiper": "^3.4.2"
   }
 }

@@ -20,13 +20,15 @@ var AppJS = {
         $('.choiceMethod .methodItem').on(              'click',   function()  { AppJS.callMethod($(this)); });
         $('.showCallBack').on(                          'click',   function()  { AppJS.switchCallBack(); });
         $('.callBackForm button').on(                   'click',   function(e) { AppJS.ajaxSubmit(e, $(this)); });
-        $('.gibBtn, .up').on(                           'click',   function()  { AppJS.rotateSite(); });
+        $('.gibBtn, .up').on(                           'click',   function()  { $('.wrapper').toggleClass('rotate'); });
         $('.changeControl').on(                         'click',   function(e) { AppJS.changeControl(e, $(this)); });
         $('.status').on(                                'click',   function()  { AppJS.changeItem($(this)); AppJS.calculateSum(); });
         $('.changeItem button').on(                     'click',   function()  { AppJS.changeBtn($(this)); AppJS.calculateSum(); });
-        $('.openPf').on(                                'click',   function()  { AppJS.pfShow(); });
-        $('.pfClose').on(                               'click',   function()  { AppJS.pfHide(); });
-        $('.overlay').on(                               'click',   function()  { AppJS.hideModal(); });
+        $('.openPf').on(                                'click',   function()  { $('.portfolio').addClass('pfShow'); });
+        $('.pfClose').on(                               'click',   function()  { $('.portfolio').removeClass('pfShow'); });
+        $('.openAbout').on(                             'click',   function()  { $('.about').addClass('showModal'); });
+        $('.openRecall').on(                            'click',   function()  { $('.recall').addClass('showModal'); });
+        $('.overlay, .closeModal').on(                  'click',   function()  { AppJS.hideModal(); });
         $('.calculate, .pubInput, .logoField').on(      'keypress',function(e) { AppJS.onlyPattern(e, $(this)); });
         $('.calculate, .pubInput, .logoField').on(      'input',   function()  { AppJS.calculateSum(); });
         $('.duplicate').on(                             'input',   function()  { AppJS.duplicate($(this)); });
@@ -44,7 +46,7 @@ var AppJS = {
     },
 
     hideModal: function () {
-        $('.show, .pfShow').removeClass('show pfShow');
+        $('.show, .pfShow, .modalWrap').removeClass('show pfShow showModal');
     },
 
     ajaxSubmit: function (e, submit) {
@@ -67,6 +69,7 @@ var AppJS = {
             nextButton: '.swiper-next',
             prevButton: '.swiper-prev',
             initialSlide: initial,
+            loop: true,
             breakpoints: {
                 400: {
                     spaceBetween: -50
@@ -80,6 +83,14 @@ var AppJS = {
         pfSlider.on('SlideChangeStart', function () {
             AppJS.sliderLevel();
         });
+
+        new Swiper('.textSlider', {
+            slidesPerView: 'auto',
+            autoplay: 2000,
+            loop: true,
+            speed: 2000
+        });
+
     },
 
     sliderLevel: function () {
@@ -141,18 +152,6 @@ var AppJS = {
 
     switchCallBack: function () {
         $('.callBack').toggleClass('show');
-    },
-
-    rotateSite: function () {
-        $('.wrapper').toggleClass('rotate');
-    },
-
-    pfShow: function () {
-        $('.portfolio').addClass('pfShow');
-    },
-
-    pfHide: function () {
-        $('.portfolio').removeClass('pfShow');
     },
 
     copyToDuplicate: function (origin) {

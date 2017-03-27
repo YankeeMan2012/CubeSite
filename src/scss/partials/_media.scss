@@ -60,6 +60,21 @@
 			line-height: 20px;
 		}
 	}
+	.infoModal {
+		.recallHead {
+			flex-wrap: wrap;
+			justify-content: center;
+			.user {
+				width: 100%;
+				justify-content: center;
+			}
+		}
+		.modalText {
+			height: 150px;
+			font-size: 16px;
+			line-height: 18px;
+		}
+	}
 }
 
 @media screen and (max-width: 740px) {
@@ -126,6 +141,9 @@
 				width: 100%;
 				padding: 75px 15px 15px;
 				border-bottom: 1px solid $border;
+				&:after {
+					display: none;
+				}
 				&:before {
 					top: 15px;
 				}
@@ -246,6 +264,55 @@
 		}
 	}
 }
+
+
+@media screen and (max-width: 530px) {
+	.infoModal {
+		padding: 15px 30px;
+		.recallHead {
+			padding-top: 0;
+			.user {
+				width: 100%;
+				justify-content: center;
+			}
+			.avatar {
+				width: 60px;
+				height: 60px;
+				min-width: 60px;
+				margin-right: 10px;
+			}
+			.name {
+				font-size: 18px;
+			}
+			.starLine {
+				flex-wrap: wrap;
+				justify-content: center;
+				margin-top: 10px;
+				.type {
+					text-align: center;
+					width: 100%;
+				}
+				.stars {
+					li {
+						min-width: 15px;
+						width: 15px;
+						height: 15px;
+						margin: 0 2px;
+					}
+				}
+			}
+		}
+		.modalText {
+			height: 150px;
+			font-size: 16px;
+			line-height: 18px;
+		}
+		.modalFooter {
+			margin: 0 30px 15px;
+		}
+	}
+}
+
 
 @media screen and (max-width: 500px) {
 	.gibBtn {
