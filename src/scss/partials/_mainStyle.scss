@@ -122,6 +122,8 @@ header {
 		min-height: 120px;
 		box-sizing: border-box;
 		padding: 10px 0;
+		border-right: 1px solid $border;
+		border-left: 1px solid $border;
 	}
 	.item {
 		width: 25%;
@@ -146,8 +148,7 @@ header {
 			right: 0;
 			height: 200px;
 			width: 1px;
-			background: rgba($darkBlue, .5);
-			box-shadow: 0 0 5px 2px rgba($darkBlue, .35);
+			background: $border;
 		}
 		&:nth-child(1) {
 			&:before {

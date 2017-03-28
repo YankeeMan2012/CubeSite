@@ -60,7 +60,7 @@
 			line-height: 20px;
 		}
 	}
-	.infoModal {
+	.modalBox .modalWrap .infoModal {
 		.recallHead {
 			flex-wrap: wrap;
 			justify-content: center;
@@ -267,8 +267,7 @@
 
 
 @media screen and (max-width: 530px) {
-	.infoModal {
-		padding: 15px 30px;
+	.modalBox .modalWrap .infoModal {
 		.recallHead {
 			padding-top: 0;
 			.user {
@@ -303,12 +302,13 @@
 			}
 		}
 		.modalText {
-			height: 150px;
+			height: 165px;
 			font-size: 16px;
 			line-height: 18px;
+			margin-bottom: 15px;
 		}
 		.modalFooter {
-			margin: 0 30px 15px;
+			margin-bottom: 0px;
 		}
 	}
 }

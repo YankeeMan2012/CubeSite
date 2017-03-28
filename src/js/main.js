@@ -96,6 +96,16 @@ var AppJS = {
             AppJS.sliderLevel();
         });
 
+        new Swiper('.recall', {
+            slidesPerView: 1,
+            loop: true,
+            speed: 1000,
+            spaceBetween: 300,
+            nextButton: '.nextSlide',
+            prevButton: '.prevSlide',
+            centeredSlides: true
+        });
+
         new Swiper('.textSlider', {
             slidesPerView: 'auto',
             autoplay: 2000,
