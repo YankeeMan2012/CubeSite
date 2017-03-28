@@ -25,7 +25,7 @@ var paths = {
             libs: [
                 // './node_modules/element-closest/element-closest.js',
                 './node_modules/jquery/dist/jquery.min.js',
-                // './node_modules/jquery.maskedinput/src/jquery.maskedinput.js',
+                './node_modules/jquery.maskedinput/src/jquery.maskedinput.js',
                 './node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js',
                 './node_modules/swiper/dist/js/swiper.jquery.js',
                 './src/js/detect.js'
@@ -101,7 +101,7 @@ gulp.task('watch',function(){
 gulp.task('default', [
     'scss',
     'libsCss',
-    // 'libsJs',
+    'libsJs',
     'js',
     'watch'
 ]);

@@ -194,6 +194,11 @@
 				display: inline-block;
 			}
 		}
+		.error {
+			color: $red;
+			margin-top: 6px;
+			font-size: 14px;
+		}
 	}
 }
 

@@ -9,6 +9,7 @@ var AppJS = {
         AppJS.sliderInit();
         AppJS.deviceDetect();
         AppJS.calculateSum();
+        AppJS.initMask($('[data-mask]'));
         $('.customScroll').mCustomScrollbar({
             scrollInertia: 200,
             theme: 'dark',
@@ -17,24 +18,27 @@ var AppJS = {
     },
 
     handlers: function () {
-        $('.choiceMethod .methodItem').on(              'click',   function()  { AppJS.callMethod($(this)); });
-        $('.showCallBack').on(                          'click',   function()  { AppJS.switchCallBack(); });
-        $('.callBackForm button').on(                   'click',   function(e) { AppJS.ajaxSubmit(e, $(this)); });
-        $('.gibBtn, .up').on(                           'click',   function()  { $('.wrapper').toggleClass('rotate'); });
-        $('.changeControl').on(                         'click',   function(e) { AppJS.changeControl(e, $(this)); });
-        $('.status').on(                                'click',   function()  { AppJS.changeItem($(this)); AppJS.calculateSum(); });
-        $('.changeItem button').on(                     'click',   function()  { AppJS.changeBtn($(this)); AppJS.calculateSum(); });
-        $('.openPf').on(                                'click',   function()  { $('.portfolio').addClass('pfShow'); });
-        $('.pfClose').on(                               'click',   function()  { $('.portfolio').removeClass('pfShow'); });
-        $('.openAbout').on(                             'click',   function()  { $('.about').addClass('showModal'); });
-        $('.openRecall').on(                            'click',   function()  { $('.recall').addClass('showModal'); });
-        $('.overlay, .closeModal').on(                  'click',   function()  { AppJS.hideModal(); });
-        $('.calculate, .pubInput, .logoField').on(      'keypress',function(e) { AppJS.onlyPattern(e, $(this)); });
-        $('.calculate, .pubInput, .logoField').on(      'input',   function()  { AppJS.calculateSum(); });
-        $('.duplicate').on(                             'input',   function()  { AppJS.duplicate($(this)); });
-        $('.pubInput, .logoField').on(                  'input',   function()  { AppJS.copyToDuplicate($(this)); });
-        $('#select').on(                                'change',  function()  { AppJS.calculateSum(); });
-        window.onresize =                                          function()  { AppJS.deviceDetect(); };
+        $('.choiceMethod .methodItem').on(          'click',    function()  { AppJS.callMethod($(this)); });
+        $('.showCallBack').on(                      'click',    function()  { AppJS.switchCallBack(); });
+        $('.callBackForm button').on(               'click',    function(e) { AppJS.ajaxSubmit(e, $(this)); });
+        $('.gibBtn, .up').on(                       'click',    function()  { $('.wrapper').toggleClass('rotate'); });
+        $('.changeControl').on(                     'click',    function(e) { AppJS.changeControl(e, $(this)); });
+        $('.status').on(                            'click',    function()  { AppJS.changeItem($(this)); AppJS.calculateSum(); });
+        $('.changeItem button').on(                 'click',    function()  { AppJS.changeBtn($(this)); AppJS.calculateSum(); });
+        $('.openPf').on(                            'click',    function()  { $('.portfolio').addClass('pfShow'); });
+        $('.pfClose').on(                           'click',    function()  { $('.portfolio').removeClass('pfShow'); });
+        $('.openAbout').on(                         'click',    function()  { $('.about').addClass('showModal'); });
+        $('.openRecall').on(                        'click',    function()  { $('.recall').addClass('showModal'); });
+        $('.overlay, .closeModal').on(              'click',    function()  { AppJS.hideModal(); });
+        $('.calculate, .pubInput, .logoField').on(  'keypress', function(e) { AppJS.onlyPattern(e, $(this)); });
+        $('.calculate, .pubInput, .logoField').on(  'input',    function()  { AppJS.calculateSum(); });
+        $('.duplicate').on(                         'input',    function()  { AppJS.duplicate($(this)); });
+        $('.pubInput, .logoField').on(              'input',    function()  { AppJS.copyToDuplicate($(this)); });
+        $('#select').on(                            'change',   function()  { AppJS.calculateSum(); });
+        window.onresize =                                       function()  { AppJS.deviceDetect(); };
+
+        $('[data-required]').on(                    'focusout', function()  { ValidForm.checkRequiredVal(this); });
+        $('[data-pattern]').on(                     'focusout', function()  { ValidForm.checkFieldToPattern(this); });
     },
 
     onlyPattern: function(e, el) {
@@ -45,19 +49,27 @@ var AppJS = {
         }
     },
 
+    initMask: function($el) {
+        var mask = $el.attr('data-mask');
+        $el.mask(mask);
+    },
+
     hideModal: function () {
         $('.show, .pfShow, .modalWrap').removeClass('show pfShow showModal');
     },
 
     ajaxSubmit: function (e, submit) {
         e.preventDefault();
-        var data = submit.closest('form').serializeArray();
-        var preloder = $('.preLoader');
-        preloder.show();
-        $.post('/mail.php', data, function () {
-            AppJS.switchCallBack();
-            preloder.hide();
-        });
+        var isValid = ValidForm.validateField(submit.siblings('.submitField'));
+        if (isValid) {
+            var data = submit.closest('form').serializeArray();
+            var preloder = $('.preLoader');
+            preloder.show();
+            $.post('/mail.php', data, function () {
+                AppJS.switchCallBack();
+                preloder.hide();
+            });
+        }
     },
 
     sliderInit: function () {
@@ -130,8 +142,9 @@ var AppJS = {
         siblings.removeClass('active');
         item.addClass('active');
         form.attr('id', 'method' + (item.closest('.methodWrap').index() + 1));
-        form.find('input').removeAttr('name').removeClass('submitField');
+        form.find('input').removeAttr('name').removeClass('submitField').val('');
         form.find('.' + name).attr('name', name).addClass('submitField');
+        ValidForm.removeInvalid(form.find('.' + name));
     },
 
     changeControl: function (e, control) {
@@ -260,4 +273,53 @@ var AppJS = {
     }
 };
 
+var ValidForm = {
+    patterns: {
+        email: /^\w+([\.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,4})+$/,
+        skype: /^[a-zA-Z][a-zA-Z0-9\._-]{5,31}$/,
+        whatsapp: /^[a-zA-Z][a-zA-Z0-9\._-]{5,31}$/,
+    },
+    message: {
+        emptyField: 'Поле не может быть пустым',
+        email: 'Неверный формат Email',
+        skype: 'Неверный формат Skype',
+        whatsapp: 'Неверный формат WhatSapp'
+    },
+    getError: function(str) { 
+        return '<p class="error">'+str+'</p>'; 
+    },
+    checkRequiredVal: function(el) {
+        var form = $(el).closest('.callBackForm');
+        ValidForm.removeInvalid(el);
+        if($(el).val().trim() === "") {
+            var error = ValidForm.getError(ValidForm.message.emptyField);
+            form.addClass('invalid').append(error);
+        }
+    },
+    checkFieldToPattern: function(el) {
+        var form = $(el).closest('.callBackForm');
+        var pattern = $(el).attr('data-pattern');
+        if( !$(el).val() ) return false;
+        if (!ValidForm.patterns[pattern].test($(el).val())) {
+            if(!form.hasClass('invalid')) {
+                var error = ValidForm.getError(ValidForm.message[pattern]);
+                form.addClass('invalid').append(error);
+            }
+        } else {
+            ValidForm.removeInvalid(el);
+        }
+    },
+    removeInvalid: function (elem) {
+        $(elem).closest('.invalid').removeClass('invalid').find('p.error').remove();
+    },
+    validateField: function (field) {
+        var isValid = true;
+        ValidForm.removeInvalid(field);
+        field.focusout();
+        if (field.closest('.invalid').length) {
+            isValid = false;
+        }
+        return isValid;
+    }
+};
 

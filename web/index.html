@@ -229,11 +229,11 @@
 
         </div>
         <form action="mail.php" method="post" class="callBackForm" id="method2">
-            <input name=""          class="telephone" type="text" placeholder="Номер телефона">
-            <input name="whatsapp"  class="whatsapp" type="text" placeholder="Логин WhatSapp">
-            <input name=""          class="skype" type="text" placeholder="Логин Skype">
-            <input name=""          class="email" type="text" placeholder="Ваш E-mail">
-            <button type="submit">Связаться со мной</button>
+            <input name=""          class="telephone" type="text" placeholder="Номер телефона" data-mask="+38(999)999-99-99" data-required>
+            <input name="whatsapp"  class="whatsapp" type="text" placeholder="Логин WhatSapp" data-pattern="whatsapp" data-required>
+            <input name=""          class="skype" type="text" placeholder="Логин Skype" data-pattern="skype" data-required>
+            <input name=""          class="email" type="text" placeholder="Ваш E-mail" data-pattern="email" data-required>
+            <button type="submit" class="callBackSubmit">Связаться со мной</button>
         </form>
     </div>
     <div class="portfolio">
@@ -399,6 +399,6 @@
 <script src="js/params.js"></script>
 <script src="js/main.js"></script>
 <link rel="stylesheet" href="https://cdn.envybox.io/widget/cbk.css">
-<!--<script type="text/javascript" src="https://cdn.envybox.io/widget/cbk.js?wcb_code=4ce65b7931dc0a65483c7e7a4c8ffa1e" charset="UTF-8" async></script>-->
+<script type="text/javascript" src="https://cdn.envybox.io/widget/cbk.js?wcb_code=4ce65b7931dc0a65483c7e7a4c8ffa1e" charset="UTF-8" async></script>
 </body>
 </html>
