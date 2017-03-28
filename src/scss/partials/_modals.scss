@@ -314,22 +314,32 @@
 	}
 }
 
-.modalBox .modalWrap {
+.navigationWrap {
 	position: absolute;
 	max-width: 970px;
 	width: calc(100% - 70px);
 	height: 470px;
 	top: 50%;
 	left: calc(50% + 35px);
-	transform: translate(calc(-50% - 35px), -50%);
 	z-index: -20;
+	transform: translate(calc(-50% - 35px), -50%);
+	&.showModal {
+		z-index: 20;
+	}
+}
 
+.modalBox .modalWrap {
+	width: 100%;
+	height: 100%;
 	background: #fff;
 	box-shadow: 0 0 12px 5px rgba(#000, .5);
 	box-sizing: border-box;
 	padding: 15px 40px;
 	border: 10px solid $darkBlue;
-
+	&.about .closeModal {
+		top: 25px;
+		right: 25px;
+	}
 	.customScroll {
 		.mCSB_draggerRail {
 			background-color: $formBack !important;
@@ -357,19 +367,11 @@
 			opacity: 1;
 		}
 	}
-	&.showModal {
-		z-index: 20;
-	}
 	.infoModal {
 		position: relative;
 		z-index: 10;
 		width: 100%;
 		height: 100%;
-		//background: #fff;
-		//box-shadow: 0 0 12px 5px rgba(#000, .5);
-		//box-sizing: border-box;
-		//padding: 15px 40px;
-		//border: 10px solid $darkBlue;
 		font-family: 'cd_bold', sans-serif;
 		.recallHead {
 			display: flex;

@@ -27,8 +27,8 @@ var AppJS = {
         $('.changeItem button').on(                 'click',    function()  { AppJS.changeBtn($(this)); AppJS.calculateSum(); });
         $('.openPf').on(                            'click',    function()  { $('.portfolio').addClass('pfShow'); });
         $('.pfClose').on(                           'click',    function()  { $('.portfolio').removeClass('pfShow'); });
-        $('.openAbout').on(                         'click',    function()  { $('.about').addClass('showModal'); });
-        $('.openRecall').on(                        'click',    function()  { $('.recall').addClass('showModal'); });
+        $('.openAbout').on(                         'click',    function()  { $('.about').closest('.navigationWrap').addClass('showModal'); });
+        $('.openRecall').on(                        'click',    function()  { $('.recall').closest('.navigationWrap').addClass('showModal'); });
         $('.overlay, .closeModal').on(              'click',    function()  { AppJS.hideModal(); });
         $('.calculate, .pubInput, .logoField').on(  'keypress', function(e) { AppJS.onlyPattern(e, $(this)); });
         $('.calculate, .pubInput, .logoField').on(  'input',    function()  { AppJS.calculateSum(); });
@@ -55,7 +55,7 @@ var AppJS = {
     },
 
     hideModal: function () {
-        $('.show, .pfShow, .modalWrap').removeClass('show pfShow showModal');
+        $('.show, .pfShow, .navigationWrap').removeClass('show pfShow showModal');
     },
 
     ajaxSubmit: function (e, submit) {
