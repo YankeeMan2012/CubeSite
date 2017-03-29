@@ -1,6 +1,6 @@
-window.onload  = function () {
+$(document).ready( function () {
     AppJS.ready();
-};
+});
 
 var AppJS = {
 
@@ -18,6 +18,8 @@ var AppJS = {
     },
 
     handlers: function () {
+        $('[data-required]').on(                    'focusout', function()  { ValidForm.checkRequiredVal(this); });
+        $('[data-pattern]').on(                     'focusout', function()  { ValidForm.checkFieldToPattern(this); });
         $('.choiceMethod .methodItem').on(          'click',    function()  { AppJS.callMethod($(this)); });
         $('.showCallBack').on(                      'click',    function()  { AppJS.switchCallBack(); });
         $('.callBackForm button').on(               'click',    function(e) { AppJS.ajaxSubmit(e, $(this)); });
@@ -36,9 +38,6 @@ var AppJS = {
         $('.pubInput, .logoField').on(              'input',    function()  { AppJS.copyToDuplicate($(this)); });
         $('#select').on(                            'change',   function()  { AppJS.calculateSum(); });
         window.onresize =                                       function()  { AppJS.deviceDetect(); };
-
-        $('[data-required]').on(                    'focusout', function()  { ValidForm.checkRequiredVal(this); });
-        $('[data-pattern]').on(                     'focusout', function()  { ValidForm.checkFieldToPattern(this); });
     },
 
     onlyPattern: function(e, el) {
@@ -287,7 +286,7 @@ var ValidForm = {
     patterns: {
         email: /^\w+([\.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,4})+$/,
         skype: /^[a-zA-Z][a-zA-Z0-9\._-]{5,31}$/,
-        whatsapp: /^[a-zA-Z][a-zA-Z0-9\._-]{5,31}$/,
+        whatsapp: /^\+?[0-9()]{5,31}$/,
     },
     message: {
         emptyField: 'Поле не может быть пустым',

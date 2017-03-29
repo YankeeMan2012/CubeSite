@@ -199,6 +199,11 @@
 			margin-top: 6px;
 			font-size: 14px;
 		}
+		&.invalid {
+			input {
+				box-shadow: inset 0 0 5px 2px $red;
+			}
+		}
 	}
 }
 
@@ -317,12 +322,12 @@
 .navigationWrap {
 	position: absolute;
 	max-width: 970px;
-	width: calc(100% - 70px);
+	width: calc(100% - 80px);
 	height: 470px;
 	top: 50%;
-	left: calc(50% + 35px);
+	left: calc(50% + 40px);
 	z-index: -20;
-	transform: translate(calc(-50% - 35px), -50%);
+	transform: translate(calc(-50% - 40px), -50%);
 	&.showModal {
 		z-index: 20;
 	}
