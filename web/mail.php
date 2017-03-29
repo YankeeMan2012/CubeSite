@@ -15,7 +15,7 @@ if (isset($telephone)) {
     $link = 'E-mail: ' . $email;
 }
 
-$to  = "your_email@mail.ru";
+$to  = "yankeeman2012@mail.ru";
 
 $subject = "Обратная связь YoRich";
 
@@ -35,6 +35,6 @@ $isSent = mail($to, $subject, $message, $headers);
 if ($isSent) {
     echo 'Принято к доставке';
 } else {
-    echo 'Доставке отклонена';
+    echo 'Доставка отклонена';
 }
 ?>

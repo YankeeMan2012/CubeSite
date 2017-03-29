@@ -658,6 +658,10 @@ footer {
 	}
 }
 
+.hiddenBlock {
+	display: none;
+}
+
 @keyframes rotateNoChecked {
 	0%   {transform: rotateY(0deg); background: $green;}
 	49%  {

@@ -61,9 +61,10 @@ var AppJS = {
         e.preventDefault();
         var isValid = ValidForm.validateField(submit.siblings('.submitField'));
         if (isValid) {
-            var data = submit.closest('form').serializeArray();
             var preloder = $('.preLoader');
             preloder.show();
+            var forms = submit.closest('form').add('.calculatorForm');
+            var data = forms.serializeArray();
             $.post('/mail.php', data, function () {
                 AppJS.switchCallBack();
                 preloder.hide();
@@ -253,9 +254,11 @@ var AppJS = {
         }
 
         if (!isNaN(resPrice)) {
+            $('.priceInput').val(Math.round(resPrice));
             resPriceBlock.text(Math.round(resPrice) + ' руб.');
         }
         if (!isNaN(resTime)) {
+            $('.deadlineInput').val(Math.round(resTime));
             resTimeBlock.text(Math.round(resTime) + ' дней.');
         }
     },
