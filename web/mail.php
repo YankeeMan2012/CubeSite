@@ -15,7 +15,7 @@ if (isset($telephone)) {
     $link = 'E-mail: ' . $email;
 }
 
-$to  = "yankeeman2012@mail.ru";
+$to  = "your_email@mail.ru";
 
 $subject = "Обратная связь YoRich";
 
@@ -30,8 +30,6 @@ $message = '<html>
             </html>';
 
 $headers  = "Content-type: text/html; charset=UTF-8 \r\n";
-$headers .= "From: Birthday Reminder <birthday@example.com>\r\n";
-$headers .= "Bcc: birthday-archive@example.com\r\n";
 
 $isSent = mail($to, $subject, $message, $headers);
 if ($isSent) {

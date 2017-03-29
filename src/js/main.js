@@ -285,7 +285,7 @@ var AppJS = {
 var ValidForm = {
     patterns: {
         email: /^\w+([\.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,4})+$/,
-        skype: /^[a-zA-Z][a-zA-Z0-9\._-]{5,31}$/,
+        skype: /^[a-zA-Z]{3,31}$/,
         whatsapp: /^\+?[0-9()]{5,31}$/,
     },
     message: {
