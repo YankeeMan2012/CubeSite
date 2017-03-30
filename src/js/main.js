@@ -78,13 +78,14 @@ var AppJS = {
         e.preventDefault();
         var isValid = ValidForm.validateField(submit.siblings('.submitField'));
         if (isValid) {
-            var preloder = $('.preLoader');
-            preloder.show();
+            var preLoader = $('.preLoader');
+            preLoader.show();
             var forms = submit.closest('form').add('.calculatorForm');
             var data = forms.serializeArray();
             $.post('/mail.php', data, function () {
                 AppJS.hideModal($('.callBack'));
-                preloder.hide();
+                AppJS.showModal($('.thanks'));
+                preLoader.hide();
             });
         }
     },
@@ -286,7 +287,7 @@ var AppJS = {
 
     appleStyle: function () {
         var body = $('body');
-        var cube = $('.cube, .side');
+        var cube = $('.cube, .side, .modalBox');
         if (AppJS.isBadBrowser) {
             var height = window.innerHeight;
             body.addClass('apple');
