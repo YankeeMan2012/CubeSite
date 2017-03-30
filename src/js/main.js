@@ -15,23 +15,33 @@ var AppJS = {
             theme: 'dark',
             scrollbarPosition: 'outside'
         });
+
+        var hash = location.hash;
+        if (hash === '#callback') {
+            AppJS.showModal($('.callBack'));
+        } else if (hash === '#portfolio') {
+            AppJS.showModal($('.portfolio'));
+        } else if (hash === '#recall') {
+            AppJS.showModal($('.recall').closest('.navigationWrap'));
+        } else if (hash === '#about') {
+            AppJS.showModal($('.about').closest('.navigationWrap'));
+        }
     },
 
     handlers: function () {
         $('[data-required]').on(                    'focusout', function()  { ValidForm.checkRequiredVal(this); });
         $('[data-pattern]').on(                     'focusout', function()  { ValidForm.checkFieldToPattern(this); });
         $('.choiceMethod .methodItem').on(          'click',    function()  { AppJS.callMethod($(this)); });
-        $('.showCallBack').on(                      'click',    function()  { AppJS.switchCallBack(); });
         $('.callBackForm button').on(               'click',    function(e) { AppJS.ajaxSubmit(e, $(this)); });
-        $('.gibBtn, .up').on(                       'click',    function()  { $('.wrapper').toggleClass('rotate'); });
+        $('.gibBtn, .up').on(                       'click',    function()  { $('.wrapper').toggleClass('rotate'); $('body').toggleClass('bottomAnimate'); });
         $('.changeControl').on(                     'click',    function(e) { AppJS.changeControl(e, $(this)); });
         $('.status').on(                            'click',    function()  { AppJS.changeItem($(this)); AppJS.calculateSum(); });
         $('.changeItem button').on(                 'click',    function()  { AppJS.changeBtn($(this)); AppJS.calculateSum(); });
-        $('.openPf').on(                            'click',    function()  { $('.portfolio').addClass('pfShow'); });
-        $('.pfClose').on(                           'click',    function()  { $('.portfolio').removeClass('pfShow'); });
-        $('.openAbout').on(                         'click',    function()  { $('.about').closest('.navigationWrap').addClass('showModal'); });
-        $('.openRecall').on(                        'click',    function()  { $('.recall').closest('.navigationWrap').addClass('showModal'); });
-        $('.overlay, .closeModal').on(              'click',    function()  { AppJS.hideModal(); });
+        $('.showCallBack').on(                      'click',    function()  { AppJS.showModal($('.callBack')); });
+        $('.openPf').on(                            'click',    function()  { AppJS.showModal($('.portfolio')); });
+        $('.openAbout').on(                         'click',    function()  { AppJS.showModal($('.about').closest('.navigationWrap')); });
+        $('.openRecall').on(                        'click',    function()  { AppJS.showModal($('.recall').closest('.navigationWrap')); });
+        $('.overlay, .closeModal, .pfClose').on(    'click',    function()  { AppJS.hideModal(); });
         $('.calculate, .pubInput, .logoField').on(  'keypress', function(e) { AppJS.onlyPattern(e, $(this)); });
         $('.calculate, .pubInput, .logoField').on(  'input',    function()  { AppJS.calculateSum(); });
         $('.duplicate').on(                         'input',    function()  { AppJS.duplicate($(this)); });
@@ -53,8 +63,15 @@ var AppJS = {
         $el.mask(mask);
     },
 
+    showModal: function (block) {
+        $('.modalBox').addClass('above');
+        block.addClass('showModal');
+    },
+
     hideModal: function () {
-        $('.show, .pfShow, .navigationWrap').removeClass('show pfShow showModal');
+        $('.modalBox').removeClass('above');
+        $('.showModal').removeClass('showModal');
+        location.hash = '';
     },
 
     ajaxSubmit: function (e, submit) {
@@ -66,7 +83,7 @@ var AppJS = {
             var forms = submit.closest('form').add('.calculatorForm');
             var data = forms.serializeArray();
             $.post('/mail.php', data, function () {
-                AppJS.switchCallBack();
+                AppJS.hideModal($('.callBack'));
                 preloder.hide();
             });
         }
@@ -171,10 +188,6 @@ var AppJS = {
         if (changeItem.hasClass('questionBox')) {
             changeItem.toggleClass('showQuestion');
         }
-    },
-
-    switchCallBack: function () {
-        $('.callBack').toggleClass('show');
     },
 
     copyToDuplicate: function (origin) {

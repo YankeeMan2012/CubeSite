@@ -641,6 +641,7 @@ footer {
 		cursor: pointer;
 		border-radius: 2px;
 		transition: background .2s linear;
+		text-decoration: none;
 		&:hover {
 			background: $red;
 		}

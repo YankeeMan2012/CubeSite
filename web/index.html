@@ -17,9 +17,9 @@
                 <div class="headerContainer">
                     <div class="logo"></div>
                     <nav class="mainMenu">
-                        <a href="#" class="openAbout">О нас</a>
-                        <a href="#" class="openPf">Портфолио</a>
-                        <a href="#" class="openRecall">Отзывы</a>
+                        <a href="#about" class="openAbout">О нас</a>
+                        <a href="#portfolio" class="openPf">Портфолио</a>
+                        <a href="#recall" class="openRecall">Отзывы</a>
                         <a href="#">Наш блог</a>
                     </nav>
                 </div>
@@ -49,20 +49,16 @@
             <div class="formContainer">
                 <form class="calculatorForm changeList customScroll">
                     <div class="changeItem design" data-key="page">
-                        <label class="changeControl designType active checked individual" for="individualDesign">
+                        <div class="changeControl designType active checked individual">
                             Индивидуальный дизайн
                             <div class="itemDescription">Lorem ipsum dolor sit amet, consectetur alaboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </div>
-                        </label>
-                        <label class="changeControl designType adaptive" data-key="adaptive" for="adaptiveDesign">
+                        </div>
+                        <div class="changeControl designType adaptive" data-key="adaptive">
                             Адаптивный шаблон
                             <div class="itemDescription">Lorem ipsum dolor sit amet, consectetur adipd exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </div>
-                        </label>
+                        </div>
                         <div class="question">количество страниц:
                             <span><input class="pageNum calculate" name="pageNum" type="text"> шт <button type="button" class="ok">ок</button></span>
-                        </div>
-                        <div class="hiddenBlock">
-                            <input type="radio" name="designType" value="individual" id="individualDesign" checked>
-                            <input type="radio" name="designType" value="adaptive" id="adaptiveDesign">
                         </div>
                     </div>
                     <div class="changeItem engine">
@@ -77,11 +73,8 @@
                         <div class="itemDescription">Lorem ipsum dolor sit amealiqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </div>
                     </div>
                     <div class="changeItem">
-                        <label class="statusWrap" for="news">
+                        <div class="statusWrap">
                             <div class="status checked" data-key="news"></div>
-                        </label>
-                        <div class="hiddenBlock">
-                            <input type="checkbox" name="news" id="news" checked>
                         </div>
                         <div class="icon">
                             <div class="itemDescription">Lorem ipsum dolagna aliqua. Ut en aliquip ex ea commodo consequat. Duis aute irure dolor in </div>
@@ -89,11 +82,8 @@
                         <div class="description">нужны ли новости?</div>
                     </div>
                     <div class="changeItem">
-                        <label class="statusWrap" for="contacts">
+                        <div class="statusWrap">
                             <div class="status checked" data-key="contacts"></div>
-                        </label>
-                        <div class="hiddenBlock">
-                            <input type="checkbox" name="contacts" id="contacts" checked>
                         </div>
                         <div class="icon">
                             <div class="itemDescription">Lorem ipsuiqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </div>
@@ -101,11 +91,8 @@
                         <div class="description">Контакты/карта проезда?</div>
                     </div>
                     <div class="changeItem questionBox publication" data-key="publication">
-                        <label class="statusWrap" for="publication">
+                        <div class="statusWrap">
                             <div class="status noChecked noCalculate"></div>
-                        </label>
-                        <div class="hiddenBlock">
-                            <input type="checkbox" name="publication" id="publication">
                         </div>
                         <div class="icon">
                             <div class="itemDescription">Lorem ipsum dona aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </div>
@@ -121,11 +108,8 @@
                         </div>
                     </div>
                     <div class="changeItem questionBox catalog">
-                        <label class="statusWrap" for="catalog">
+                        <div class="statusWrap">
                             <div class="status noChecked" data-key="catalog"></div>
-                        </label>
-                        <div class="hiddenBlock">
-                            <input type="checkbox" name="catalog" id="catalog">
                         </div>
                         <div class="icon">
                             <div class="itemDescription">Lorem ipsum dliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </div>
@@ -138,11 +122,8 @@
                         </div>
                     </div>
                     <div class="changeItem">
-                        <label class="statusWrap" for="multilanguage">
+                        <div class="statusWrap">
                             <div class="status noChecked" data-key="multilanguage"></div>
-                        </label>
-                        <div class="hiddenBlock">
-                            <input type="checkbox" name="multilanguage" id="multilanguage">
                         </div>
                         <div class="icon">
                             <div class="itemDescription">Lorem ipsuiqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </div>
@@ -150,11 +131,8 @@
                         <div class="description">Мультиязычный интерфейс</div>
                     </div>
                     <div class="changeItem">
-                        <label class="statusWrap" for="mailDelivery">
+                        <div class="statusWrap">
                             <div class="status checked" data-key="mail_delivery"></div>
-                        </label>
-                        <div class="hiddenBlock">
-                            <input type="checkbox" name="mailDelivery" id="mailDelivery" checked>
                         </div>
                         <div class="icon">
                             <div class="itemDescription">Lorem aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </div>
@@ -162,11 +140,8 @@
                         <div class="description">Подключение почтовой рассылки</div>
                     </div>
                     <div class="changeItem">
-                        <label class="statusWrap" for="sms">
+                        <div class="statusWrap">
                             <div class="status noChecked" data-key="sms"></div>
-                        </label>
-                        <div class="hiddenBlock">
-                            <input type="checkbox" name="sms" id="sms">
                         </div>
                         <div class="icon">
                             <div class="itemDescription">Lorem aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </div>
@@ -174,11 +149,8 @@
                         <div class="description">СМС шлюз</div>
                     </div>
                     <div class="changeItem">
-                        <label class="statusWrap" for="corporateEmail">
+                        <div class="statusWrap">
                             <div class="status checked" data-key="corporate_email"></div>
-                        </label>
-                        <div class="hiddenBlock">
-                            <input type="checkbox" name="corporateEmail" id="corporateEmail" checked>
                         </div>
                         <div class="icon">
                             <div class="itemDescription">Lorem ipiqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </div>
@@ -186,11 +158,8 @@
                         <div class="description">Создание корпоративной почты</div>
                     </div>
                     <div class="changeItem questionBox showQuestion logotype" data-key="logo">
-                        <label class="statusWrap" for="logo">
+                        <div class="statusWrap">
                             <div class="status checked noCalculate"></div>
-                        </label>
-                        <div class="hiddenBlock">
-                            <input type="checkbox" name="logo" id="logo" checked>
                         </div>
                         <div class="icon">
                             <div class="itemDescription">Lorem ipsa aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </div>
@@ -204,11 +173,8 @@
                         </div>
                     </div>
                     <div class="changeItem">
-                        <label class="statusWrap" for="technicalSupport">
+                        <div class="statusWrap">
                             <div class="status noChecked" data-key="technical_support"></div>
-                        </label>
-                        <div class="hiddenBlock">
-                            <input type="checkbox" name="technicalSupport" id="technicalSupport">
                         </div>
                         <div class="icon">
                             <div class="itemDescription">Lorem ipsum exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in </div>
@@ -216,7 +182,7 @@
                         <div class="description">Онлайн консультант, техническая поддержка</div>
                     </div>
                     <div class="wish">
-                        <label for="wish">Пожелания:</label>
+                        <div>Пожелания:</div>
                         <textarea name="wishField" id="wish"></textarea>
                         <input class="priceInput" type="hidden" name="price" value="0">
                         <input class="deadlineInput" type="hidden" name="deadline" value="0">
@@ -238,7 +204,7 @@
                         <li class="price">Ориентировочная стоимость: <span>- руб.</span></li>
                         <li class="deadline">Ориентировочные сроки: <span>- дней.</span></li>
                     </ul>
-                    <div class="button showCallBack">ЗАКАЗАТЬ ПРОДАЮЩИЙ САЙТ</div>
+                    <a class="button showCallBack" href="#callback">ЗАКАЗАТЬ ПРОДАЮЩИЙ САЙТ</a>
                 </div>
             </footer>
 
@@ -247,7 +213,7 @@
 </div>
 
 <div class="modalBox">
-    <div class="callBack">
+    <div class="callBack" id="callback">
         <div class="question">Как можно с вами связаться для уточнения деталей?</div>
         <div class="choiceMethod">
             <div class="methodWrap">
@@ -265,14 +231,14 @@
 
         </div>
         <form action="mail.php" method="post" class="callBackForm" id="method2">
-            <input name=""          class="telephone" type="text" placeholder="Номер телефона" data-mask="+38(999)999-99-99" data-required>
-            <input name="whatsapp"  class="whatsapp submitField" type="text" placeholder="Логин WhatSapp" data-mask="+38(999)999-99-99" data-required>
+            <input name=""          class="telephone" type="text" placeholder="Номер телефона" data-mask="+99(999)999-99-99" data-required>
+            <input name="whatsapp"  class="whatsapp submitField" type="text" placeholder="Логин WhatSapp" data-mask="+99(999)999-99-99" data-required>
             <input name=""          class="skype" type="text" placeholder="Логин Skype" data-pattern="skype" data-required>
             <input name=""          class="email" type="text" placeholder="Ваш E-mail" data-pattern="email" data-required>
             <button type="submit" class="callBackSubmit">Связаться со мной</button>
         </form>
     </div>
-    <div class="portfolio">
+    <div class="portfolio" id="portfolio">
         <div class="pfClose"></div>
         <div class="pfSlider swiper-container">
             <div class="pfSliderWrap swiper-wrapper">
@@ -347,7 +313,7 @@
             <div class="pfNav swiper-next"></div>
         </div>
     </div>
-    <div class="navigationWrap">
+    <div class="navigationWrap" id="recall">
         <div class="modalWrap recall swiper-container">
             <div class="closeModal"></div>
             <div class="infoModal swiper-wrapper">
@@ -460,7 +426,7 @@
         <div class="navBtn prevSlide"></div>
         <div class="navBtn nextSlide"></div>
     </div>
-    <div class="navigationWrap">
+    <div class="navigationWrap" id="about">
         <div class="modalWrap about">
             <div class="closeModal"></div>
             <div class="infoModal">
