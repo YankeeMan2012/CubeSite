@@ -9,7 +9,7 @@ var AppJS = {
         AppJS.sliderInit();
         AppJS.deviceDetect();
         AppJS.calculateSum();
-        AppJS.initMask($('[data-mask]'));
+
         $('.customScroll').mCustomScrollbar({
             scrollInertia: 200,
             theme: 'dark',
@@ -56,11 +56,6 @@ var AppJS = {
         if (!test || val.length > 5) {
             e.preventDefault();
         }
-    },
-
-    initMask: function($el) {
-        var mask = $el.attr('data-mask');
-        $el.mask(mask);
     },
 
     showModal: function (block) {
@@ -303,13 +298,15 @@ var ValidForm = {
     patterns: {
         email: /^\w+([\.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,4})+$/,
         skype: /^[a-zA-Z]{3,31}$/,
-        whatsapp: /^\+?[0-9()]{5,31}$/,
+        whatsapp: /^\+?[\d]{1,3}(-|\s)?\(?[\d]{1,3}\)?(-|\s)?[\d](-|\s)?[\d](-|\s)?[\d](-|\s)?[\d](-|\s)?[\d](-|\s)?[\d](-|\s)?\d$/,
+        mobile: /^\+?[\d]{1,3}(-|\s)?\(?[\d]{1,3}\)?(-|\s)?[\d](-|\s)?[\d](-|\s)?[\d](-|\s)?[\d](-|\s)?[\d](-|\s)?[\d](-|\s)?\d$/,
     },
     message: {
         emptyField: 'Поле не может быть пустым',
         email: 'Неверный формат Email',
         skype: 'Неверный формат Skype',
-        whatsapp: 'Неверный формат WhatSapp'
+        whatsapp: 'Неверный формат WhatSapp',
+        mobile: 'Неверный формат ntktajyf'
     },
     getError: function(str) { 
         return '<p class="error">'+str+'</p>'; 
@@ -326,7 +323,8 @@ var ValidForm = {
         var form = $(el).closest('.callBackForm');
         var pattern = $(el).attr('data-pattern');
         if( !$(el).val() ) return false;
-        if (!ValidForm.patterns[pattern].test($(el).val())) {
+        var val = $(el).val();
+        if (!ValidForm.patterns[pattern].test(val)) {
             if(!form.hasClass('invalid')) {
                 var error = ValidForm.getError(ValidForm.message[pattern]);
                 form.addClass('invalid').append(error);
