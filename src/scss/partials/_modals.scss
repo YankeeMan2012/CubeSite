@@ -1,42 +1,3 @@
-@keyframes bottomAnimate {
-	0%  { top: 150%; }
-	80% { top: 45%; }
-	95% { top: 51%; }
-	100%{ top: 50%; }
-}
-
-@keyframes topAnimate {
-	0%  { top: -150%; }
-	80% { top: 55%; }
-	95% { top: 49%; }
-	100%{ top: 50%; }
-}
-
-.bottomAnimate {
-	.modalBox.above {
-		.showModal {
-			animation: bottomAnimate 1s ease-out !important;
-		}
-	}
-
-}
-
-.modalBox {
-	position: absolute;
-	overflow: hidden;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100vh;
-	z-index: -100;
-	&.above {
-		z-index: 200;
-		.showModal {
-			animation: topAnimate 1s ease-out;
-		}
-	}
-}
-
 .preLoader {
 	position: fixed;
 	width: 100%;
@@ -80,12 +41,10 @@
 	padding: 26px 20px 110px;
 	box-shadow: 0 0 12px 5px rgba(#000, .5);
 	font-family: 'cd_bold', sans-serif;
-	//display: none;
 	z-index: -20;
 	opacity: 0;
 
 	&.showModal {
-		//display: block;
 		z-index: 20;
 		opacity: 1;
 	}
@@ -623,4 +582,44 @@
 		//width: 80px !important;
 		//height: 80px !important;
 	}
+}
+
+.modalBox {
+	position: absolute;
+	overflow: hidden;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	z-index: -100;
+	&.above {
+		z-index: 200;
+		.showModal {
+			animation: topAnimate 1s ease-out;
+		}
+	}
+}
+
+.bottomAnimate {
+	.modalBox.above {
+		.showModal {
+			opacity: 1;
+			animation: bottomAnimate 1s ease-out;
+		}
+	}
+}
+
+@keyframes bottomAnimate {
+	0%  { top: 150%; opacity: 0; }
+	30% { opacity: 0; }
+	80% { top: 45%;  opacity: 1; }
+	95% { top: 51%; opacity: 1; }
+	100%{ top: 50%; opacity: 1; }
+}
+
+@keyframes topAnimate {
+	0%  { top: -150%; }
+	80% { top: 55%; }
+	95% { top: 49%; }
+	100%{ top: 50%; }
 }
