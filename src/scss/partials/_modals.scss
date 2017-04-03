@@ -277,8 +277,8 @@
 			}
 			.preview {
 				position: absolute;
-				width: auto;
-				height: 100%;
+				width: 100%;
+				height: auto;
 				top: 0;
 				left: 50%;
 				transform: translateX(-50%);
@@ -391,7 +391,7 @@
 		z-index: 10;
 		width: 100%;
 		height: 100%;
-		font-family: 'cd_bold', sans-serif;
+		font-family: 'cd_regular', sans-serif;
 		.recallHead {
 			display: flex;
 			flex-direction: row;
@@ -438,6 +438,10 @@
 					background: url('../img/icon/starGrey.svg') center center / cover no-repeat;
 					&.active {
 						background: url('../img/icon/star.svg') center center / cover no-repeat;
+					}
+					&.half {
+						background: url('../img/icon/halfStar.svg') center center / cover no-repeat;
+
 					}
 				}
 			}
@@ -491,6 +495,44 @@
 			font-size: 14px;
 			line-height: 1.3;
 		}
+	}
+}
+
+.about {
+	font-family: 'cd_regular', sans-serif;
+	.quote {
+		text-align: center;
+		padding: 10px;
+		margin: 5px 40px;
+		color: rgb(91, 155, 213);
+		position: relative;
+		&:before, &:after {
+			content: '';
+			position: absolute;
+			left: 0;
+			width: 100%;
+			height: 1px;
+			background: rgb(91, 155, 213);
+			top: 0;
+		}
+		&:after {
+			top: auto;
+			bottom: 0;
+		}
+	}
+	ul, ol {
+		list-style-type: disc;
+		padding-left: 30px;
+		margin: 10px 0;
+		li {
+			margin-bottom: 8px;
+			span {
+				font-family: 'cd_bold', sans-serif;
+			}
+		}
+	}
+	ol {
+		list-style-type: decimal;
 	}
 }
 

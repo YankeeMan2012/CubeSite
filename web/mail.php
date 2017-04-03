@@ -15,7 +15,7 @@ if (isset($telephone)) {
     $link = 'E-mail: ' . $email;
 }
 
-$to  = "yankeeman2012@mail.ru";
+$to  = "yourmail@mail.ru";
 
 $subject = "Обратная связь YoRich";
 
