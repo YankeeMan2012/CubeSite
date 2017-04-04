@@ -520,6 +520,12 @@
 			bottom: 0;
 		}
 	}
+	h2 {
+		font-family: 'cd_bold', sans-serif;
+		font-size: 16px;
+		text-align: center;
+		margin: 5px;
+	}
 	ul, ol {
 		list-style-type: disc;
 		padding-left: 30px;
@@ -533,6 +539,9 @@
 	}
 	ol {
 		list-style-type: decimal;
+	}
+	b {
+		font-family: 'cd_bold', sans-serif;
 	}
 }
 
